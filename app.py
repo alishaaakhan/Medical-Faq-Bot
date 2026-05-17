@@ -10,170 +10,244 @@ from pypdf import PdfReader
 # ---------------- PAGE CONFIG ----------------
 
 st.set_page_config(
-    page_title="MediCare AI Assistant",
+    page_title="Medical FAQ AI Bot",
     page_icon="🏥",
     layout="wide"
 )
 
-# ---------------- BACKGROUND IMAGE (UPDATED) ----------------
-
-def add_bg():
-    st.markdown(
-        """
-        <style>
-        .stApp {
-            background-image: url("https://images.unsplash.com/photo-1580281657527-47f249e8f1e2");
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-        }
-
-        /* GLASS CARD */
-        .glass {
-            background: rgba(255,255,255,0.78);
-            backdrop-filter: blur(14px);
-            border-radius: 20px;
-            padding: 25px;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
-        }
-
-        /* TITLE */
-        .title {
-            font-size: 58px;
-            font-weight: 800;
-            text-align: center;
-            background: linear-gradient(90deg,#2563eb,#06b6d4,#22c55e);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .subtitle {
-            text-align: center;
-            font-size: 18px;
-            color: #1f2937;
-            margin-bottom: 25px;
-        }
-
-        /* CARDS */
-        .card {
-            background: rgba(255,255,255,0.9);
-            padding: 18px;
-            border-radius: 16px;
-            text-align: center;
-            box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-            transition: 0.3s;
-        }
-
-        .card:hover {
-            transform: translateY(-6px);
-        }
-
-        /* BUTTON */
-        .stButton>button {
-            background: linear-gradient(90deg,#2563eb,#06b6d4);
-            color: white;
-            padding: 12px;
-            border-radius: 12px;
-            font-weight: 600;
-            border: none;
-            width: 100%;
-        }
-
-        .stButton>button:hover {
-            transform: scale(1.03);
-        }
-
-        /* ANSWER */
-        .answer {
-            background: rgba(255,255,255,0.92);
-            border-left: 6px solid #22c55e;
-            padding: 20px;
-            border-radius: 15px;
-            font-size: 16px;
-        }
-
-        /* SIDEBAR */
-        section[data-testid="stSidebar"] {
-            background: linear-gradient(180deg,#0f172a,#1e293b);
-        }
-
-        section[data-testid="stSidebar"] * {
-            color: white !important;
-        }
-
-        </style>
-        """,
-        unsafe_allow_html=True
-    )
-
-add_bg()
-
-# ---------------- TITLE ----------------
+# ---------------- MODERN MEDICAL UI ----------------
 
 st.markdown("""
-<div class="glass">
-    <div class="title">🏥 MediCare AI Assistant</div>
-    <div class="subtitle">Smart Medical FAQ Bot using Gemini + FAISS + RAG System</div>
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+html, body, [class*="css"] {
+    font-family: 'Inter', sans-serif;
+}
+
+/* MAIN BACKGROUND */
+
+.stApp {
+    background-image: linear-gradient(
+        rgba(240,248,255,0.88),
+        rgba(240,248,255,0.88)
+    ),
+    url("https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=2070&auto=format&fit=crop");
+
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+/* HIDE STREAMLIT DEFAULT */
+
+#MainMenu {
+    visibility: hidden;
+}
+
+footer {
+    visibility: hidden;
+}
+
+header {
+    visibility: hidden;
+}
+
+/* HERO SECTION */
+
+.hero {
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 25px;
+}
+
+.hero h1 {
+    font-size: 62px;
+    font-weight: 800;
+    background: linear-gradient(90deg,#2563eb,#0891b2,#22c55e);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero p {
+    font-size: 20px;
+    color: #1e293b;
+    font-weight: 500;
+}
+
+/* GLASS EFFECT */
+
+.glass {
+    background: rgba(255,255,255,0.72);
+    backdrop-filter: blur(14px);
+    border-radius: 22px;
+    padding: 28px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+}
+
+/* FEATURE CARDS */
+
+.card {
+    background: rgba(255,255,255,0.88);
+    border-radius: 18px;
+    padding: 22px;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+}
+
+.card h3 {
+    color: #0f172a;
+}
+
+.card p {
+    color: #475569;
+}
+
+/* INPUT BOX */
+
+.stTextInput input {
+    background-color: white;
+    color: black;
+    border-radius: 14px;
+    padding: 15px;
+    border: 2px solid #dbeafe;
+    font-size: 16px;
+}
+
+/* BUTTON */
+
+.stButton>button {
+    width: 100%;
+    background: linear-gradient(90deg,#2563eb,#06b6d4);
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 14px;
+    font-size: 17px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.stButton>button:hover {
+    transform: scale(1.02);
+}
+
+/* ANSWER BOX */
+
+.answer-box {
+    background: rgba(255,255,255,0.92);
+    border-left: 7px solid #22c55e;
+    padding: 22px;
+    border-radius: 16px;
+    color: #111827;
+    font-size: 16px;
+    line-height: 1.8;
+    box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+}
+
+/* SIDEBAR */
+
+section[data-testid="stSidebar"] {
+    background: linear-gradient(180deg,#0f172a,#1e293b);
+}
+
+section[data-testid="stSidebar"] * {
+    color: white !important;
+}
+
+/* FOOTER */
+
+.footer {
+    text-align: center;
+    color: #334155;
+    margin-top: 35px;
+    font-weight: 600;
+}
+
+</style>
+""", unsafe_allow_html=True)
+
+# ---------------- HERO ----------------
+
+st.markdown("""
+<div class="hero">
+    <h1>🏥 Medical FAQ AI Bot</h1>
+    <p>AI-powered healthcare assistant using Gemini + FAISS + RAG</p>
 </div>
 """, unsafe_allow_html=True)
 
-st.write("")
-
 # ---------------- SIDEBAR ----------------
 
-st.sidebar.title("⚙️ Control Panel")
+st.sidebar.title("⚙️ Medical AI Panel")
 
 try:
     genai.configure(api_key=st.secrets["GEMINI_API_KEY"])
-    st.sidebar.success("Gemini Connected")
+    st.sidebar.success("✅ Gemini API Connected")
+
 except:
-    st.sidebar.error("API Key Missing")
+    st.sidebar.error("❌ API Key Missing")
     st.stop()
 
-st.sidebar.info("""
-📌 Upload:
-- Admission Docs
-- Fee Structure
-- Hospital FAQ
-- Medical Guidelines
+st.sidebar.markdown("""
+### 📌 Upload Medical Documents
+
+Supported PDFs:
+- Medical FAQs
+- WHO Guidelines
+- Hospital Policies
+- Healthcare Manuals
+- Medical Encyclopedia
+- Treatment Information
 """)
 
-# ---------------- CARDS ----------------
+# ---------------- FEATURE CARDS ----------------
 
 col1, col2, col3 = st.columns(3)
 
 with col1:
     st.markdown("""
     <div class="card">
-        <h3>📄 PDF Docs</h3>
-        <p>Upload medical knowledge</p>
+        <h3>📄 Medical Knowledge</h3>
+        <p>Upload trusted healthcare PDFs and documents</p>
     </div>
     """, unsafe_allow_html=True)
 
 with col2:
     st.markdown("""
     <div class="card">
-        <h3>🧠 AI Engine</h3>
-        <p>FAISS + Gemini RAG</p>
+        <h3>🧠 AI Medical Search</h3>
+        <p>Semantic search powered by Gemini and FAISS</p>
     </div>
     """, unsafe_allow_html=True)
 
 with col3:
     st.markdown("""
     <div class="card">
-        <h3>⚕️ Safe Answers</h3>
-        <p>Only trusted medical data</p>
+        <h3>⚕️ Safe Healthcare Answers</h3>
+        <p>Reliable responses only from uploaded documents</p>
     </div>
     """, unsafe_allow_html=True)
 
-# ---------------- UPLOAD ----------------
+st.write("")
+
+# ---------------- MAIN GLASS CONTAINER ----------------
+
+st.markdown('<div class="glass">', unsafe_allow_html=True)
 
 st.markdown("## 📤 Upload Medical PDF")
 
-uploaded_file = st.file_uploader("", type="pdf")
+uploaded_file = st.file_uploader(
+    "Upload healthcare FAQ or medical documents",
+    type="pdf"
+)
 
-# ---------------- PROCESS ----------------
+# ---------------- PDF PROCESS ----------------
 
 if uploaded_file:
 
@@ -181,89 +255,167 @@ if uploaded_file:
         tmp.write(uploaded_file.read())
         tmp_path = tmp.name
 
-    reader = PdfReader(tmp_path)
+    try:
 
-    text = ""
-    for page in reader.pages:
-        t = page.extract_text()
-        if t:
-            text += t + "\n"
+        with st.spinner("📚 Reading medical documents..."):
 
-    def chunk_text(text, size=700, overlap=120):
-        chunks = []
-        start = 0
-        while start < len(text):
-            chunks.append(text[start:start+size])
-            start += size - overlap
-        return chunks
+            reader = PdfReader(tmp_path)
 
-    chunks = chunk_text(text)
+            full_text = ""
 
-    model = SentenceTransformer("all-MiniLM-L6-v2")
-    embeddings = model.encode(chunks).astype("float32")
+            for page in reader.pages:
 
-    index = faiss.IndexFlatL2(embeddings.shape[1])
-    index.add(embeddings)
+                text = page.extract_text()
 
-    st.success(f"Knowledge Base Ready: {len(chunks)} chunks loaded")
+                if text:
+                    full_text += text + "\n"
 
-    # ---------------- QUESTION ----------------
+        # ---------------- CHUNKING ----------------
 
-    st.markdown("## 💬 Ask Medical Question")
+        def chunk_text(text, chunk_size=700, overlap=120):
 
-    question = st.text_input("", placeholder="Example: What are MBBS admission fees?")
+            chunks = []
 
-    if st.button("Get Answer 🚀"):
+            start = 0
 
-        q_emb = model.encode([question]).astype("float32")
-        _, idx = index.search(q_emb, k=4)
+            while start < len(text):
 
-        context = "\n\n".join([chunks[i] for i in idx[0]])
+                end = start + chunk_size
 
-        prompt = f"""
-You are a Medical FAQ AI Assistant.
+                chunks.append(text[start:end])
 
-Rules:
-- Answer ONLY from context
-- If not found say "Not available in documents"
-- No hallucination
-- Add medical disclaimer
+                start += chunk_size - overlap
 
-Context:
+            return chunks
+
+        texts = chunk_text(full_text)
+
+        # ---------------- EMBEDDINGS ----------------
+
+        with st.spinner("🧠 Building medical knowledge base..."):
+
+            model = SentenceTransformer(
+                "all-MiniLM-L6-v2"
+            )
+
+            embeddings = model.encode(
+                texts
+            ).astype("float32")
+
+            index = faiss.IndexFlatL2(
+                embeddings.shape[1]
+            )
+
+            index.add(embeddings)
+
+        st.success(
+            f"✅ Medical knowledge base ready with {len(texts)} chunks"
+        )
+
+        # ---------------- QUESTION ----------------
+
+        st.markdown("## 💬 Ask Your Medical Question")
+
+        question = st.text_input(
+            "",
+            placeholder="Example: What are the symptoms of diabetes?"
+        )
+
+        # ---------------- ANSWER BUTTON ----------------
+
+        if st.button("🔍 Generate Medical Answer"):
+
+            if question.strip() == "":
+                st.warning("Please enter a medical question.")
+
+            else:
+
+                q_emb = model.encode(
+                    [question]
+                ).astype("float32")
+
+                distances, indices = index.search(
+                    q_emb,
+                    k=4
+                )
+
+                context = "\n\n".join(
+                    [texts[i] for i in indices[0]]
+                )
+
+                # ---------------- PROMPT ----------------
+
+                prompt = f"""
+You are an AI Medical FAQ Assistant.
+
+STRICT RULES:
+1. Answer ONLY using the provided context.
+2. If answer not found say:
+"The information is not available in the uploaded medical documents."
+3. Never generate fake medical advice.
+4. Keep answers safe and professional.
+5. Add a short medical disclaimer.
+6. Mention source-based response style.
+
+CONTEXT:
 {context}
 
-Question:
+QUESTION:
 {question}
 
-Answer:
+ANSWER:
 """
 
-        llm = genai.GenerativeModel("gemini-2.5-flash-lite")
+                try:
 
-        with st.spinner("Analyzing medical data..."):
-            res = llm.generate_content(prompt)
+                    llm = genai.GenerativeModel(
+                        "gemini-2.5-flash-lite"
+                    )
 
-        st.markdown("## 🩺 AI Answer")
+                    with st.spinner("🤖 AI is analyzing medical information..."):
 
-        st.markdown(f"""
-        <div class="answer">
-        {res.text}
-        </div>
-        """, unsafe_allow_html=True)
+                        response = llm.generate_content(prompt)
 
-        with st.expander("📚 Source Context"):
-            st.write(context[:2000])
+                    st.markdown("## 🩺 AI Medical Answer")
 
-        st.warning("""
+                    st.markdown(
+                        f"""
+                        <div class="answer-box">
+                        {response.text}
+                        </div>
+                        """,
+                        unsafe_allow_html=True
+                    )
+
+                    # ---------------- SOURCE ----------------
+
+                    with st.expander("📚 View Source Context"):
+
+                        st.write(context[:2000])
+
+                    # ---------------- DISCLAIMER ----------------
+
+                    st.warning("""
 ⚠️ Medical Disclaimer:
-This bot is for informational purposes only.
-Always consult a certified doctor.
+This chatbot provides information only from uploaded documents.
+It does not replace professional medical consultation.
+Always consult certified healthcare professionals.
 """)
+
+                except Exception as e:
+
+                    st.error(f"Gemini Error: {e}")
+
+    finally:
+
+        os.unlink(tmp_path)
+
+st.markdown("</div>", unsafe_allow_html=True)
 
 # ---------------- FOOTER ----------------
 
 st.markdown("""
-<div style='text-align:center; padding:20px; color:white; font-weight:600;'>
-Made with ❤️ using Streamlit • Gemini • FAISS • RAG
+<div class="footer">
+Made with ❤️ using Streamlit • Gemini AI • FAISS • RAG Architecture
 </div>
 """, unsafe_allow_html=True)
