@@ -260,7 +260,7 @@ section[data-testid="stSidebar"] * {
 st.markdown("""
 <div class="hero">
     <h1>🩺 MediVerse AI</h1>
-    <p>Next Generation Medical FAQ Assistant powered by Gemini + FAISS + RAG</p>
+    <p>Next Generation Medical FAQ Assistant </p>
 </div>
 """, unsafe_allow_html=True)
 
