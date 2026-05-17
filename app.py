@@ -598,59 +598,7 @@ with col3:
 
 st.markdown("<br><br><br>", unsafe_allow_html=True)
 
-# ---------------- EXTRA SECTION ----------------
 
-st.markdown("""
-<div class="extra-section">
-
-    <div class="extra-title">
-        ⚕️ Why Choose MediVerse AI?
-    </div>
-
-    <div class="extra-text">
-        MediVerse AI combines Retrieval-Augmented Generation (RAG),
-        Gemini AI, FAISS semantic search, and trusted healthcare
-        documents to deliver reliable medical FAQ responses with
-        intelligent document understanding.
-    </div>
-
-</div>
-""", unsafe_allow_html=True)
-
-mini1, mini2, mini3 = st.columns(3)
-
-with mini1:
-    st.markdown("""
-    <div class="feature-mini">
-        <div style="font-size:52px;">🧠</div>
-        <h3>AI Intelligence</h3>
-        <p>
-        Advanced semantic understanding using Gemini AI and FAISS vector search.
-        </p>
-    </div>
-    """, unsafe_allow_html=True)
-
-with mini2:
-    st.markdown("""
-    <div class="feature-mini">
-        <div style="font-size:52px;">📚</div>
-        <h3>Trusted Sources</h3>
-        <p>
-        Answers generated strictly from uploaded healthcare documents.
-        </p>
-    </div>
-    """, unsafe_allow_html=True)
-
-with mini3:
-    st.markdown("""
-    <div class="feature-mini">
-        <div style="font-size:52px;">🛡️</div>
-        <h3>Safe Responses</h3>
-        <p>
-        Designed to provide professional and responsible medical information.
-        </p>
-    </div>
-    """, unsafe_allow_html=True)
 # ---------------- SIDEBAR ----------------
 
 st.sidebar.title("⚙️ MediVerse Control Center")
