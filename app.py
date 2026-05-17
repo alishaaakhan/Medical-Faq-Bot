@@ -10,7 +10,7 @@ from pypdf import PdfReader
 # ---------------- PAGE CONFIG ----------------
 
 st.set_page_config(
-    page_title="MediVerse AI",
+    page_title="MediCare AI",
     page_icon="🩺",
     layout="wide",
     initial_sidebar_state="expanded"
