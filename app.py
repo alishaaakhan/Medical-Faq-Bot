@@ -16,7 +16,7 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# ---------------- ULTRA PREMIUM UI ----------------
+# ---------------- PREMIUM UI ----------------
 
 st.markdown("""
 <style>
@@ -27,23 +27,25 @@ html, body, [class*="css"] {
     font-family: 'Poppins', sans-serif;
 }
 
-/* MAIN BACKGROUND */
+/* ---------------- MAIN BACKGROUND ---------------- */
 
 .stApp {
-    background-image:
-    linear-gradient(
-        rgba(240,248,255,0.82),
-        rgba(240,248,255,0.85)
-    ),
-    url("https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?q=80&w=2070&auto=format&fit=crop");
 
-    background-size: cover;
-    background-position: center;
+    background:
+    linear-gradient(
+        135deg,
+        #e0f2fe 0%,
+        #dbeafe 20%,
+        #cffafe 40%,
+        #dcfce7 60%,
+        #f0fdf4 80%,
+        #ecfeff 100%
+    );
+
     background-attachment: fixed;
-    background-repeat: no-repeat;
 }
 
-/* REMOVE STREAMLIT DEFAULT */
+/* ---------------- REMOVE STREAMLIT DEFAULT ---------------- */
 
 #MainMenu {
     visibility: hidden;
@@ -57,18 +59,25 @@ footer {
     visibility: hidden;
 }
 
-/* HERO SECTION */
+/* ---------------- HERO SECTION ---------------- */
 
 .hero {
+
     text-align: center;
+
     padding-top: 10px;
+
     padding-bottom: 30px;
 }
 
 .hero h1 {
+
     font-size: 82px;
+
     font-weight: 800;
+
     line-height: 1;
+
     background: linear-gradient(
         90deg,
         #2563eb,
@@ -79,64 +88,123 @@ footer {
     );
 
     -webkit-background-clip: text;
+
     -webkit-text-fill-color: transparent;
 
     margin-bottom: 10px;
 }
 
 .hero p {
+
     font-size: 22px;
+
     color: #0f172a;
+
     font-weight: 500;
 }
 
-/* GLASS MAIN CONTAINER */
+/* ---------------- GLASS CONTAINER ---------------- */
 
 .glass {
+
     background: rgba(255,255,255,0.68);
+
     backdrop-filter: blur(20px);
+
     border-radius: 30px;
+
     padding: 35px;
+
     box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+
     border: 1px solid rgba(255,255,255,0.35);
 }
 
-/* FEATURE CARDS */
+/* ---------------- FEATURE CARDS ---------------- */
 
 .card {
+
     background: rgba(255,255,255,0.92);
+
     border-radius: 24px;
+
     padding: 30px;
+
     text-align: center;
+
     box-shadow: 0 12px 25px rgba(0,0,0,0.08);
+
     transition: 0.4s;
+
     height: 260px;
 }
 
 .card:hover {
+
     transform: translateY(-10px) scale(1.02);
 }
 
 .icon {
+
     font-size: 58px;
+
     margin-bottom: 12px;
 }
 
 .card h3 {
+
     font-size: 26px;
+
     color: #0f172a;
+
     margin-bottom: 10px;
 }
 
 .card p {
+
     color: #475569;
+
     font-size: 15px;
+
     line-height: 1.7;
 }
 
-/* UPLOAD SECTION */
+/* ---------------- IMAGE ALIGNMENT ---------------- */
+
+[data-testid="stImage"] {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+}
+
+[data-testid="stImage"] img {
+
+    width: 100%;
+
+    height: 260px;
+
+    object-fit: cover;
+
+    border-radius: 24px;
+
+    box-shadow:
+    0 10px 30px rgba(0,0,0,0.12);
+
+    transition: 0.4s;
+}
+
+[data-testid="stImage"] img:hover {
+
+    transform: scale(1.03);
+}
+
+/* ---------------- UPLOAD BOX ---------------- */
 
 .upload-box {
+
     background: linear-gradient(
         135deg,
         #2563eb,
@@ -146,43 +214,63 @@ footer {
     );
 
     border-radius: 24px;
+
     padding: 30px;
+
     text-align: center;
+
     color: white;
+
     margin-bottom: 25px;
+
     box-shadow: 0 10px 25px rgba(37,99,235,0.28);
 }
 
 .upload-box h2 {
+
     font-size: 34px;
 }
 
-/* QUESTION BOX */
+/* ---------------- QUESTION BOX ---------------- */
 
 .question-box {
+
     background: rgba(255,255,255,0.92);
+
     padding: 25px;
+
     border-radius: 22px;
+
     margin-top: 20px;
+
     box-shadow: 0 10px 25px rgba(0,0,0,0.08);
 }
 
-/* INPUT */
+/* ---------------- INPUT ---------------- */
 
 .stTextInput input {
+
     background-color: white;
+
     color: #111827;
+
     border-radius: 16px;
+
     padding: 18px;
+
     border: 2px solid #dbeafe;
+
     font-size: 17px;
 }
 
-/* BUTTON */
+/* ---------------- BUTTON ---------------- */
 
 .stButton>button {
+
     width: 100%;
+
     padding: 16px;
+
     border-radius: 16px;
 
     background: linear-gradient(
@@ -194,34 +282,48 @@ footer {
     );
 
     color: white;
+
     border: none;
+
     font-size: 18px;
+
     font-weight: 600;
 
     transition: 0.35s;
 }
 
 .stButton>button:hover {
+
     transform: scale(1.02);
 }
 
-/* ANSWER BOX */
+/* ---------------- ANSWER BOX ---------------- */
 
 .answer-box {
+
     background: rgba(255,255,255,0.95);
+
     border-left: 8px solid #22c55e;
+
     border-radius: 22px;
+
     padding: 30px;
+
     color: #111827;
+
     font-size: 17px;
+
     line-height: 2;
+
     margin-top: 18px;
+
     box-shadow: 0 10px 30px rgba(0,0,0,0.08);
 }
 
-/* SIDEBAR */
+/* ---------------- SIDEBAR ---------------- */
 
 section[data-testid="stSidebar"] {
+
     background: linear-gradient(
         180deg,
         #020617,
@@ -231,43 +333,19 @@ section[data-testid="stSidebar"] {
 }
 
 section[data-testid="stSidebar"] * {
+
     color: white !important;
 }
 
-/* FOOTER */
+/* ---------------- FLOATING BOT ---------------- */
 
-.footer {
-    text-align: center;
-    margin-top: 40px;
-    color: #0f172a;
-    font-weight: 600;
-    font-size: 16px;
-}
-
-/* TITLE */
-
-.section-title {
-    color: #0f172a;
-    font-size: 30px;
-    font-weight: 700;
-}
-
-/* FLOATING AI BOT */
-
-.floating-bot {
+.avatar {
 
     position: fixed;
 
-    bottom: 30px;
+    bottom: 25px;
 
-    right: 30px;
-
-    z-index: 9999;
-
-    animation: botFloat 3s ease-in-out infinite;
-}
-
-.bot-circle {
+    right: 25px;
 
     width: 95px;
 
@@ -284,52 +362,21 @@ section[data-testid="stSidebar"] * {
 
     display: flex;
 
-    align-items: center;
-
     justify-content: center;
 
-    font-size: 46px;
+    align-items: center;
 
-    color: white;
-
-    box-shadow:
-    0 0 20px rgba(37,99,235,0.45),
-    0 0 45px rgba(6,182,212,0.35);
-
-    cursor: pointer;
-
-    transition: 0.4s;
-
-    position: relative;
-}
-
-.bot-circle:hover {
-
-    transform: scale(1.12);
+    font-size: 45px;
 
     box-shadow:
-    0 0 30px rgba(37,99,235,0.65),
-    0 0 60px rgba(6,182,212,0.45);
+    0 0 35px rgba(37,99,235,0.7);
+
+    animation: float 3s ease infinite;
+
+    z-index: 999;
 }
 
-.bot-circle::before {
-
-    content: "";
-
-    position: absolute;
-
-    width: 115px;
-
-    height: 115px;
-
-    border-radius: 50%;
-
-    border: 3px solid rgba(37,99,235,0.35);
-
-    animation: pulse 2s infinite;
-}
-
-@keyframes botFloat {
+@keyframes float {
 
     0% {
         transform: translateY(0px);
@@ -344,48 +391,28 @@ section[data-testid="stSidebar"] * {
     }
 }
 
-@keyframes pulse {
+/* ---------------- FOOTER ---------------- */
 
-    0% {
-        transform: scale(0.9);
-        opacity: 1;
-    }
+.footer {
 
-    70% {
-        transform: scale(1.15);
-        opacity: 0;
-    }
+    text-align: center;
 
-    100% {
-        opacity: 0;
-    }
-}
-
-.bot-message {
-
-    position: absolute;
-
-    bottom: 115px;
-
-    right: 0;
-
-    width: 240px;
-
-    background: rgba(255,255,255,0.96);
-
-    padding: 16px;
-
-    border-radius: 20px;
+    margin-top: 40px;
 
     color: #0f172a;
 
-    font-size: 14px;
-
     font-weight: 600;
 
-    box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+    font-size: 16px;
+}
 
-    backdrop-filter: blur(12px);
+.section-title {
+
+    color: #0f172a;
+
+    font-size: 30px;
+
+    font-weight: 700;
 }
 
 </style>
@@ -396,9 +423,10 @@ section[data-testid="stSidebar"] * {
 st.markdown("""
 <div class="hero">
     <h1>🩺 MediVerse AI</h1>
-    <p>Next Generation Medical FAQ Assistant </p>
+    <p>Next Generation Medical FAQ Assistant</p>
 </div>
 """, unsafe_allow_html=True)
+
 # ---------------- MEDICAL IMAGE SECTION ----------------
 
 st.markdown("""
@@ -428,35 +456,40 @@ AI-powered medical FAQ assistant using RAG, Gemini AI and trusted healthcare doc
 </div>
 """, unsafe_allow_html=True)
 
-img1, img2, img3 = st.columns(3)
+col1, col2, col3 = st.columns(3)
 
-with img1:
+with col1:
     st.image(
         "https://images.unsplash.com/photo-1584982751601-97dcc096659c?q=80&w=1200&auto=format&fit=crop",
         use_container_width=True
     )
 
-with img2:
+with col2:
     st.image(
         "https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=1200&auto=format&fit=crop",
         use_container_width=True
     )
 
-with img3:
+with col3:
     st.image(
         "https://images.unsplash.com/photo-1581595219315-a187dd40c322?q=80&w=1200&auto=format&fit=crop",
         use_container_width=True
     )
+
 # ---------------- SIDEBAR ----------------
 
 st.sidebar.title("⚙️ MediVerse Control Center")
 
 try:
+
     genai.configure(api_key=st.secrets["GEMINI_API_KEY"])
+
     st.sidebar.success("✅ Gemini API Connected")
 
 except:
+
     st.sidebar.error("❌ API Key Missing")
+
     st.stop()
 
 st.sidebar.markdown("""
@@ -522,7 +555,7 @@ st.write("")
 
 st.markdown('<div class="glass">', unsafe_allow_html=True)
 
-# ---------------- UPLOAD BOX ----------------
+# ---------------- UPLOAD SECTION ----------------
 
 st.markdown("""
 <div class="upload-box">
@@ -559,7 +592,7 @@ if uploaded_file:
                 text = page.extract_text()
 
                 if text:
-                    full_text += text + "\\n"
+                    full_text += text + "\n"
 
         # ---------------- CHUNKING ----------------
 
@@ -589,9 +622,7 @@ if uploaded_file:
 
             embeddings = model.encode(texts).astype("float32")
 
-            index = faiss.IndexFlatL2(
-                embeddings.shape[1]
-            )
+            index = faiss.IndexFlatL2(embeddings.shape[1])
 
             index.add(embeddings)
 
@@ -617,20 +648,16 @@ if uploaded_file:
         if st.button("🚀 Generate AI Medical Answer"):
 
             if question.strip() == "":
+
                 st.warning("Please enter a medical question.")
 
             else:
 
-                q_emb = model.encode(
-                    [question]
-                ).astype("float32")
+                q_emb = model.encode([question]).astype("float32")
 
-                distances, indices = index.search(
-                    q_emb,
-                    k=4
-                )
+                distances, indices = index.search(q_emb, k=4)
 
-                context = "\\n\\n".join(
+                context = "\n\n".join(
                     [texts[i] for i in indices[0]]
                 )
 
@@ -696,84 +723,18 @@ Always consult certified healthcare professionals.
 
 st.markdown("</div>", unsafe_allow_html=True)
 
-# =====================================================
-# FLOATING AI BOT CSS
-# =====================================================
-
-st.markdown("""
-<style>
-
-.avatar {
-
-    position: fixed;
-
-    bottom: 25px;
-
-    right: 25px;
-
-    width: 95px;
-
-    height: 95px;
-
-    border-radius: 50%;
-
-    background: linear-gradient(
-       135deg,
-        #e0f2fe 0%,
-        #dbeafe 20%,
-        #cffafe 40%,
-        #dcfce7 60%,
-        #f0fdf4 80%,
-        #ecfeff 100%
-    );
-
-    display: flex;
-
-    justify-content: center;
-
-    align-items: center;
-
-    font-size: 45px;
-
-    box-shadow:
-    0 0 35px rgba(168,85,247,0.9);
-
-    animation: float 3s ease infinite;
-
-    z-index: 999;
-}
-
-@keyframes float {
-
-    0% {
-        transform: translateY(0px);
-    }
-
-    50% {
-        transform: translateY(-12px);
-    }
-
-    100% {
-        transform: translateY(0px);
-    }
-}
-
-</style>
-""", unsafe_allow_html=True)
-
-# =====================================================
-# FLOATING AI BOT
-# =====================================================
+# ---------------- FLOATING BOT ----------------
 
 st.markdown("""
 <div class='avatar'>
 🤖
 </div>
 """, unsafe_allow_html=True)
+
 # ---------------- FOOTER ----------------
 
 st.markdown("""
 <div class="footer">
-Made by Alisha Khan ❤️ 
+Made by Alisha Khan ❤️
 </div>
 """, unsafe_allow_html=True)
