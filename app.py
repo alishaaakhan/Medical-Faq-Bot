@@ -601,7 +601,32 @@ st.markdown("""
 🤖
 </div>
 """, unsafe_allow_html=True)
+# =====================================================
+# LAPTOP AI ANIMATION
+# =====================================================
 
+components.html("""
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
+<div style="
+display:flex;
+justify-content:center;
+align-items:center;
+margin-top:30px;
+margin-bottom:20px;
+">
+
+<lottie-player
+src="https://assets2.lottiefiles.com/packages/lf20_w51pcehl.json"
+background="transparent"
+speed="1"
+style="width:320px;height:320px;"
+loop
+autoplay>
+</lottie-player>
+
+</div>
+""", height=340)
 # ---------------- FOOTER ----------------
 
 st.markdown("""
