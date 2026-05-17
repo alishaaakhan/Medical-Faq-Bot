@@ -15,32 +15,32 @@ st.set_page_config(
     layout="wide"
 )
 
-# ---------------- BACKGROUND IMAGE ----------------
+# ---------------- BACKGROUND IMAGE (UPDATED) ----------------
 
 def add_bg():
     st.markdown(
         """
         <style>
         .stApp {
-            background-image: url("https://images.unsplash.com/photo-1588776814546-1ffcf47267a5");
+            background-image: url("https://images.unsplash.com/photo-1580281657527-47f249e8f1e2");
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
             background-attachment: fixed;
         }
 
-        /* GLASS EFFECT */
+        /* GLASS CARD */
         .glass {
-            background: rgba(255,255,255,0.75);
+            background: rgba(255,255,255,0.78);
             backdrop-filter: blur(14px);
             border-radius: 20px;
             padding: 25px;
             box-shadow: 0 8px 30px rgba(0,0,0,0.15);
         }
 
-        /* HERO TITLE */
+        /* TITLE */
         .title {
-            font-size: 60px;
+            font-size: 58px;
             font-weight: 800;
             text-align: center;
             background: linear-gradient(90deg,#2563eb,#06b6d4,#22c55e);
@@ -57,7 +57,7 @@ def add_bg():
 
         /* CARDS */
         .card {
-            background: rgba(255,255,255,0.85);
+            background: rgba(255,255,255,0.9);
             padding: 18px;
             border-radius: 16px;
             text-align: center;
@@ -84,9 +84,9 @@ def add_bg():
             transform: scale(1.03);
         }
 
-        /* ANSWER BOX */
+        /* ANSWER */
         .answer {
-            background: rgba(255,255,255,0.9);
+            background: rgba(255,255,255,0.92);
             border-left: 6px solid #22c55e;
             padding: 20px;
             border-radius: 15px;
@@ -131,23 +131,23 @@ except:
     st.sidebar.error("API Key Missing")
     st.stop()
 
-st.sidebar.markdown("""
-📌 Upload Medical Documents:
-- Admission Details
+st.sidebar.info("""
+📌 Upload:
+- Admission Docs
 - Fee Structure
 - Hospital FAQ
-- WHO Guidelines
+- Medical Guidelines
 """)
 
-# ---------------- FEATURE CARDS ----------------
+# ---------------- CARDS ----------------
 
 col1, col2, col3 = st.columns(3)
 
 with col1:
     st.markdown("""
     <div class="card">
-        <h3>📄 Medical Docs</h3>
-        <p>Upload PDF knowledge base</p>
+        <h3>📄 PDF Docs</h3>
+        <p>Upload medical knowledge</p>
     </div>
     """, unsafe_allow_html=True)
 
@@ -155,7 +155,7 @@ with col2:
     st.markdown("""
     <div class="card">
         <h3>🧠 AI Engine</h3>
-        <p>Gemini + FAISS RAG system</p>
+        <p>FAISS + Gemini RAG</p>
     </div>
     """, unsafe_allow_html=True)
 
@@ -163,7 +163,7 @@ with col3:
     st.markdown("""
     <div class="card">
         <h3>⚕️ Safe Answers</h3>
-        <p>Only trusted medical info</p>
+        <p>Only trusted medical data</p>
     </div>
     """, unsafe_allow_html=True)
 
@@ -205,7 +205,7 @@ if uploaded_file:
     index = faiss.IndexFlatL2(embeddings.shape[1])
     index.add(embeddings)
 
-    st.success(f"Medical Knowledge Loaded: {len(chunks)} chunks")
+    st.success(f"Knowledge Base Ready: {len(chunks)} chunks loaded")
 
     # ---------------- QUESTION ----------------
 
@@ -257,13 +257,13 @@ Answer:
         st.warning("""
 ⚠️ Medical Disclaimer:
 This bot is for informational purposes only.
-Always consult a certified healthcare professional.
+Always consult a certified doctor.
 """)
 
 # ---------------- FOOTER ----------------
 
 st.markdown("""
-<div style='text-align:center; padding:20px; color:white;'>
+<div style='text-align:center; padding:20px; color:white; font-weight:600;'>
 Made with ❤️ using Streamlit • Gemini • FAISS • RAG
 </div>
 """, unsafe_allow_html=True)
