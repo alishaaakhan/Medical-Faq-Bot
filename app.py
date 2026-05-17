@@ -10,37 +10,37 @@ from pypdf import PdfReader
 # ---------------- PAGE CONFIG ----------------
 
 st.set_page_config(
-    page_title="Medical FAQ AI Bot",
+    page_title="MediNova AI",
     page_icon="🏥",
-    layout="wide"
+    layout="wide",
+    initial_sidebar_state="expanded"
 )
 
-# ---------------- MODERN MEDICAL UI ----------------
+# ---------------- ADVANCED UI ----------------
 
 st.markdown("""
 <style>
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
 html, body, [class*="css"] {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
 /* MAIN BACKGROUND */
 
 .stApp {
-    background-image: linear-gradient(
-        rgba(240,248,255,0.88),
-        rgba(240,248,255,0.88)
-    ),
-    url("https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=2070&auto=format&fit=crop");
+    background-image:
+    linear-gradient(rgba(240,248,255,0.86), rgba(240,248,255,0.88)),
+    url("https://images.unsplash.com/photo-1584515933487-779824d29309?q=80&w=2070&auto=format&fit=crop");
 
     background-size: cover;
     background-position: center;
+    background-repeat: no-repeat;
     background-attachment: fixed;
 }
 
-/* HIDE STREAMLIT DEFAULT */
+/* REMOVE STREAMLIT DEFAULT */
 
 #MainMenu {
     visibility: hidden;
@@ -58,64 +58,96 @@ header {
 
 .hero {
     text-align: center;
-    padding-top: 20px;
+    padding-top: 10px;
     padding-bottom: 25px;
 }
 
 .hero h1 {
-    font-size: 62px;
+    font-size: 72px;
     font-weight: 800;
-    background: linear-gradient(90deg,#2563eb,#0891b2,#22c55e);
+    background: linear-gradient(90deg,#2563eb,#0891b2,#14b8a6,#22c55e);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    margin-bottom: 8px;
 }
 
 .hero p {
     font-size: 20px;
-    color: #1e293b;
+    color: #0f172a;
     font-weight: 500;
 }
 
-/* GLASS EFFECT */
+/* GLASS CONTAINER */
 
-.glass {
+.glass-container {
     background: rgba(255,255,255,0.72);
-    backdrop-filter: blur(14px);
-    border-radius: 22px;
-    padding: 28px;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+    backdrop-filter: blur(18px);
+    border-radius: 28px;
+    padding: 30px;
+    box-shadow: 0 10px 35px rgba(0,0,0,0.12);
+    border: 1px solid rgba(255,255,255,0.35);
 }
 
 /* FEATURE CARDS */
 
 .card {
-    background: rgba(255,255,255,0.88);
-    border-radius: 18px;
-    padding: 22px;
+    background: rgba(255,255,255,0.92);
+    border-radius: 22px;
+    padding: 25px;
     text-align: center;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-    transition: 0.3s;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    transition: 0.35s;
+    height: 210px;
 }
 
 .card:hover {
-    transform: translateY(-6px);
+    transform: translateY(-8px);
+}
+
+.card-icon {
+    font-size: 48px;
+    margin-bottom: 10px;
 }
 
 .card h3 {
     color: #0f172a;
+    font-size: 24px;
 }
 
 .card p {
     color: #475569;
+    font-size: 15px;
 }
 
-/* INPUT BOX */
+/* UPLOAD BOX */
+
+.upload-box {
+    background: linear-gradient(135deg,#2563eb,#06b6d4,#14b8a6);
+    padding: 22px;
+    border-radius: 20px;
+    text-align: center;
+    color: white;
+    margin-bottom: 20px;
+    box-shadow: 0 8px 20px rgba(37,99,235,0.25);
+}
+
+/* QUESTION SECTION */
+
+.question-box {
+    background: rgba(255,255,255,0.9);
+    padding: 22px;
+    border-radius: 20px;
+    margin-top: 20px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+}
+
+/* INPUT */
 
 .stTextInput input {
     background-color: white;
-    color: black;
-    border-radius: 14px;
-    padding: 15px;
+    color: #111827;
+    border-radius: 15px;
+    padding: 16px;
     border: 2px solid #dbeafe;
     font-size: 16px;
 }
@@ -124,14 +156,15 @@ header {
 
 .stButton>button {
     width: 100%;
-    background: linear-gradient(90deg,#2563eb,#06b6d4);
+    background: linear-gradient(90deg,#2563eb,#06b6d4,#14b8a6);
     color: white;
     border: none;
-    padding: 14px;
-    border-radius: 14px;
+    padding: 15px;
+    border-radius: 15px;
     font-size: 17px;
     font-weight: 600;
     transition: 0.3s;
+    margin-top: 10px;
 }
 
 .stButton>button:hover {
@@ -141,20 +174,21 @@ header {
 /* ANSWER BOX */
 
 .answer-box {
-    background: rgba(255,255,255,0.92);
-    border-left: 7px solid #22c55e;
-    padding: 22px;
-    border-radius: 16px;
+    background: rgba(255,255,255,0.96);
+    border-left: 8px solid #22c55e;
+    padding: 25px;
+    border-radius: 18px;
     color: #111827;
     font-size: 16px;
-    line-height: 1.8;
-    box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+    line-height: 1.9;
+    margin-top: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
 }
 
 /* SIDEBAR */
 
 section[data-testid="stSidebar"] {
-    background: linear-gradient(180deg,#0f172a,#1e293b);
+    background: linear-gradient(180deg,#0f172a,#111827,#1e293b);
 }
 
 section[data-testid="stSidebar"] * {
@@ -165,26 +199,34 @@ section[data-testid="stSidebar"] * {
 
 .footer {
     text-align: center;
-    color: #334155;
+    color: #0f172a;
     margin-top: 35px;
     font-weight: 600;
+    font-size: 15px;
+}
+
+/* TITLES */
+
+.section-title {
+    color: #0f172a;
+    font-weight: 700;
 }
 
 </style>
 """, unsafe_allow_html=True)
 
-# ---------------- HERO ----------------
+# ---------------- HERO SECTION ----------------
 
 st.markdown("""
 <div class="hero">
-    <h1>🏥 Medical FAQ AI Bot</h1>
-    <p>AI-powered healthcare assistant using Gemini + FAISS + RAG</p>
+    <h1>🏥 MediNova AI</h1>
+    <p>Advanced Medical FAQ Assistant using Gemini + FAISS + RAG Technology</p>
 </div>
 """, unsafe_allow_html=True)
 
 # ---------------- SIDEBAR ----------------
 
-st.sidebar.title("⚙️ Medical AI Panel")
+st.sidebar.title("⚙️ MediNova Control Panel")
 
 try:
     genai.configure(api_key=st.secrets["GEMINI_API_KEY"])
@@ -195,15 +237,22 @@ except:
     st.stop()
 
 st.sidebar.markdown("""
-### 📌 Upload Medical Documents
+### 📌 Supported Medical Documents
 
-Supported PDFs:
-- Medical FAQs
+- Medical FAQ PDFs
 - WHO Guidelines
-- Hospital Policies
-- Healthcare Manuals
-- Medical Encyclopedia
+- Healthcare Policies
 - Treatment Information
+- Hospital Manuals
+- Medical Encyclopedia
+""")
+
+st.sidebar.info("""
+💡 Example Questions:
+- What are diabetes symptoms?
+- What causes hypertension?
+- What are asthma treatments?
+- What precautions are used for COVID-19?
 """)
 
 # ---------------- FEATURE CARDS ----------------
@@ -213,24 +262,27 @@ col1, col2, col3 = st.columns(3)
 with col1:
     st.markdown("""
     <div class="card">
-        <h3>📄 Medical Knowledge</h3>
-        <p>Upload trusted healthcare PDFs and documents</p>
+        <div class="card-icon">📄</div>
+        <h3>Medical Knowledge</h3>
+        <p>Upload trusted healthcare PDFs and build your AI medical knowledge base.</p>
     </div>
     """, unsafe_allow_html=True)
 
 with col2:
     st.markdown("""
     <div class="card">
-        <h3>🧠 AI Medical Search</h3>
-        <p>Semantic search powered by Gemini and FAISS</p>
+        <div class="card-icon">🧠</div>
+        <h3>AI Semantic Search</h3>
+        <p>Powered by Gemini AI and FAISS for highly accurate document retrieval.</p>
     </div>
     """, unsafe_allow_html=True)
 
 with col3:
     st.markdown("""
     <div class="card">
-        <h3>⚕️ Safe Healthcare Answers</h3>
-        <p>Reliable responses only from uploaded documents</p>
+        <div class="card-icon">⚕️</div>
+        <h3>Safe Healthcare Answers</h3>
+        <p>Provides professional answers strictly from uploaded medical documents.</p>
     </div>
     """, unsafe_allow_html=True)
 
@@ -238,12 +290,19 @@ st.write("")
 
 # ---------------- MAIN GLASS CONTAINER ----------------
 
-st.markdown('<div class="glass">', unsafe_allow_html=True)
+st.markdown('<div class="glass-container">', unsafe_allow_html=True)
 
-st.markdown("## 📤 Upload Medical PDF")
+# ---------------- UPLOAD ----------------
+
+st.markdown("""
+<div class="upload-box">
+    <h2>📤 Upload Medical PDF</h2>
+    <p>Upload healthcare FAQs, medical manuals, WHO guidelines, or treatment information.</p>
+</div>
+""", unsafe_allow_html=True)
 
 uploaded_file = st.file_uploader(
-    "Upload healthcare FAQ or medical documents",
+    "",
     type="pdf"
 )
 
@@ -252,12 +311,14 @@ uploaded_file = st.file_uploader(
 if uploaded_file:
 
     with tempfile.NamedTemporaryFile(delete=False, suffix=".pdf") as tmp:
+
         tmp.write(uploaded_file.read())
+
         tmp_path = tmp.name
 
     try:
 
-        with st.spinner("📚 Reading medical documents..."):
+        with st.spinner("📚 Extracting medical knowledge from PDF..."):
 
             reader = PdfReader(tmp_path)
 
@@ -292,7 +353,7 @@ if uploaded_file:
 
         # ---------------- EMBEDDINGS ----------------
 
-        with st.spinner("🧠 Building medical knowledge base..."):
+        with st.spinner("🧠 Building AI medical knowledge base..."):
 
             model = SentenceTransformer(
                 "all-MiniLM-L6-v2"
@@ -309,21 +370,25 @@ if uploaded_file:
             index.add(embeddings)
 
         st.success(
-            f"✅ Medical knowledge base ready with {len(texts)} chunks"
+            f"✅ Medical knowledge base ready with {len(texts)} document chunks."
         )
 
-        # ---------------- QUESTION ----------------
+        # ---------------- QUESTION SECTION ----------------
 
-        st.markdown("## 💬 Ask Your Medical Question")
+        st.markdown("""
+        <div class="question-box">
+            <h3 class="section-title">💬 Ask Your Medical Question</h3>
+        </div>
+        """, unsafe_allow_html=True)
 
         question = st.text_input(
             "",
-            placeholder="Example: What are the symptoms of diabetes?"
+            placeholder="Example: What are the symptoms of pneumonia?"
         )
 
         # ---------------- ANSWER BUTTON ----------------
 
-        if st.button("🔍 Generate Medical Answer"):
+        if st.button("🔍 Generate AI Medical Answer"):
 
             if question.strip() == "":
                 st.warning("Please enter a medical question.")
@@ -346,16 +411,16 @@ if uploaded_file:
                 # ---------------- PROMPT ----------------
 
                 prompt = f"""
-You are an AI Medical FAQ Assistant.
+You are an advanced AI Medical FAQ Assistant.
 
 STRICT RULES:
-1. Answer ONLY using the provided context.
+1. Answer ONLY from the provided context.
 2. If answer not found say:
 "The information is not available in the uploaded medical documents."
 3. Never generate fake medical advice.
-4. Keep answers safe and professional.
-5. Add a short medical disclaimer.
-6. Mention source-based response style.
+4. Keep responses professional and safe.
+5. Add a short healthcare disclaimer.
+6. Use source-based answering style.
 
 CONTEXT:
 {context}
