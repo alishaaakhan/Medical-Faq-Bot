@@ -10,7 +10,7 @@ from pypdf import PdfReader
 # ---------------- PAGE CONFIG ----------------
 
 st.set_page_config(
-    page_title="MediCare AI",
+    page_title="MediVerse AI",
     page_icon="🩺",
     layout="wide",
     initial_sidebar_state="expanded"
@@ -252,6 +252,142 @@ section[data-testid="stSidebar"] * {
     font-weight: 700;
 }
 
+/* FLOATING AI BOT */
+
+.floating-bot {
+
+    position: fixed;
+
+    bottom: 30px;
+
+    right: 30px;
+
+    z-index: 9999;
+
+    animation: botFloat 3s ease-in-out infinite;
+}
+
+.bot-circle {
+
+    width: 95px;
+
+    height: 95px;
+
+    border-radius: 50%;
+
+    background: linear-gradient(
+        135deg,
+        #2563eb,
+        #06b6d4,
+        #14b8a6
+    );
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 46px;
+
+    color: white;
+
+    box-shadow:
+    0 0 20px rgba(37,99,235,0.45),
+    0 0 45px rgba(6,182,212,0.35);
+
+    cursor: pointer;
+
+    transition: 0.4s;
+
+    position: relative;
+}
+
+.bot-circle:hover {
+
+    transform: scale(1.12);
+
+    box-shadow:
+    0 0 30px rgba(37,99,235,0.65),
+    0 0 60px rgba(6,182,212,0.45);
+}
+
+.bot-circle::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 115px;
+
+    height: 115px;
+
+    border-radius: 50%;
+
+    border: 3px solid rgba(37,99,235,0.35);
+
+    animation: pulse 2s infinite;
+}
+
+@keyframes botFloat {
+
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+@keyframes pulse {
+
+    0% {
+        transform: scale(0.9);
+        opacity: 1;
+    }
+
+    70% {
+        transform: scale(1.15);
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+.bot-message {
+
+    position: absolute;
+
+    bottom: 115px;
+
+    right: 0;
+
+    width: 240px;
+
+    background: rgba(255,255,255,0.96);
+
+    padding: 16px;
+
+    border-radius: 20px;
+
+    color: #0f172a;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+
+    backdrop-filter: blur(12px);
+}
+
 </style>
 """, unsafe_allow_html=True)
 
@@ -259,7 +395,7 @@ section[data-testid="stSidebar"] * {
 
 st.markdown("""
 <div class="hero">
-    <h1>🩺 MediCare AI</h1>
+    <h1>🩺 MediVerse AI</h1>
     <p>Next Generation Medical FAQ Assistant </p>
 </div>
 """, unsafe_allow_html=True)
@@ -270,7 +406,6 @@ st.sidebar.title("⚙️ MediVerse Control Center")
 
 try:
     genai.configure(api_key=st.secrets["GEMINI_API_KEY"])
-
     st.sidebar.success("✅ Gemini API Connected")
 
 except:
@@ -352,10 +487,7 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-uploaded_file = st.file_uploader(
-    "",
-    type="pdf"
-)
+uploaded_file = st.file_uploader("", type="pdf")
 
 # ---------------- PDF PROCESS ----------------
 
@@ -380,7 +512,7 @@ if uploaded_file:
                 text = page.extract_text()
 
                 if text:
-                    full_text += text + "\n"
+                    full_text += text + "\\n"
 
         # ---------------- CHUNKING ----------------
 
@@ -406,13 +538,9 @@ if uploaded_file:
 
         with st.spinner("🧠 Building AI medical knowledge base..."):
 
-            model = SentenceTransformer(
-                "all-MiniLM-L6-v2"
-            )
+            model = SentenceTransformer("all-MiniLM-L6-v2")
 
-            embeddings = model.encode(
-                texts
-            ).astype("float32")
+            embeddings = model.encode(texts).astype("float32")
 
             index = faiss.IndexFlatL2(
                 embeddings.shape[1]
@@ -455,11 +583,9 @@ if uploaded_file:
                     k=4
                 )
 
-                context = "\n\n".join(
+                context = "\\n\\n".join(
                     [texts[i] for i in indices[0]]
                 )
-
-                # ---------------- PROMPT ----------------
 
                 prompt = f"""
 You are an advanced AI Medical FAQ Assistant.
@@ -502,13 +628,9 @@ ANSWER:
                         unsafe_allow_html=True
                     )
 
-                    # ---------------- SOURCE ----------------
-
                     with st.expander("📚 View Source Context"):
 
                         st.write(context[:2000])
-
-                    # ---------------- DISCLAIMER ----------------
 
                     st.warning("""
 ⚠️ Medical Disclaimer:
@@ -527,13 +649,20 @@ Always consult certified healthcare professionals.
 
 st.markdown("</div>", unsafe_allow_html=True)
 
-# =====================================================
-# FLOATING BOT
-# =====================================================
+# ---------------- FLOATING AI BOT ----------------
 
 st.markdown("""
-<div class='avatar'>
-🤖
+<div class="floating-bot">
+
+    <div class="bot-message">
+        👋 Hi! I'm MediVerse AI <br>
+        Ask me medical questions from your uploaded healthcare PDFs.
+    </div>
+
+    <div class="bot-circle">
+        🤖
+    </div>
+
 </div>
 """, unsafe_allow_html=True)
 
@@ -541,6 +670,6 @@ st.markdown("""
 
 st.markdown("""
 <div class="footer">
-Made by Alisha Khan❤️
+Made by Alisha Khan ❤️ 
 </div>
 """, unsafe_allow_html=True)
