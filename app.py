@@ -422,7 +422,128 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-# ---------------- IMAGE SECTION ----------------
+# ---------------- MEDICAL IMAGE SECTION ----------------
+
+st.markdown("""
+<style>
+
+/* IMAGE ALIGNMENT */
+
+[data-testid="stImage"] {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+}
+
+[data-testid="stImage"] img {
+
+    width: 100%;
+
+    height: 260px;
+
+    object-fit: cover;
+
+    border-radius: 24px;
+
+    box-shadow:
+    0 10px 30px rgba(0,0,0,0.12);
+
+    transition: 0.4s;
+}
+
+[data-testid="stImage"] img:hover {
+
+    transform: scale(1.03);
+}
+
+/* EXTRA SECTION */
+
+.extra-section {
+
+    margin-top: 60px;
+
+    background: rgba(255,255,255,0.75);
+
+    backdrop-filter: blur(18px);
+
+    border-radius: 28px;
+
+    padding: 40px;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,0.10);
+}
+
+.extra-title {
+
+    text-align: center;
+
+    font-size: 42px;
+
+    font-weight: 800;
+
+    color: #0f172a;
+
+    margin-bottom: 15px;
+}
+
+.extra-text {
+
+    text-align: center;
+
+    font-size: 18px;
+
+    color: #334155;
+
+    line-height: 1.9;
+
+    margin-bottom: 35px;
+}
+
+.feature-mini {
+
+    background: rgba(255,255,255,0.92);
+
+    border-radius: 22px;
+
+    padding: 25px;
+
+    text-align: center;
+
+    box-shadow: 0 8px 22px rgba(0,0,0,0.08);
+
+    transition: 0.3s;
+}
+
+.feature-mini:hover {
+
+    transform: translateY(-8px);
+}
+
+.feature-mini h3 {
+
+    color: #0f172a;
+
+    margin-top: 12px;
+
+    margin-bottom: 10px;
+}
+
+.feature-mini p {
+
+    color: #475569;
+
+    font-size: 15px;
+
+    line-height: 1.7;
+}
+
+</style>
+""", unsafe_allow_html=True)
+
+# ---------------- TITLE ----------------
 
 st.markdown("""
 <div style="
@@ -451,26 +572,85 @@ AI-powered medical FAQ assistant using RAG, Gemini AI and trusted healthcare doc
 </div>
 """, unsafe_allow_html=True)
 
-img1, img2, img3 = st.columns(3)
+# ---------------- IMAGES ----------------
 
-with img1:
+col1, col2, col3 = st.columns(3)
+
+with col1:
     st.image(
         "https://images.unsplash.com/photo-1584982751601-97dcc096659c?q=80&w=1200&auto=format&fit=crop",
         use_container_width=True
     )
 
-with img2:
+with col2:
     st.image(
         "https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=1200&auto=format&fit=crop",
         use_container_width=True
     )
 
-with img3:
+with col3:
     st.image(
         "https://images.unsplash.com/photo-1581595219315-a187dd40c322?q=80&w=1200&auto=format&fit=crop",
         use_container_width=True
     )
 
+# ---------------- GAP ----------------
+
+st.markdown("<br><br><br>", unsafe_allow_html=True)
+
+# ---------------- EXTRA SECTION ----------------
+
+st.markdown("""
+<div class="extra-section">
+
+    <div class="extra-title">
+        ⚕️ Why Choose MediVerse AI?
+    </div>
+
+    <div class="extra-text">
+        MediVerse AI combines Retrieval-Augmented Generation (RAG),
+        Gemini AI, FAISS semantic search, and trusted healthcare
+        documents to deliver reliable medical FAQ responses with
+        intelligent document understanding.
+    </div>
+
+</div>
+""", unsafe_allow_html=True)
+
+mini1, mini2, mini3 = st.columns(3)
+
+with mini1:
+    st.markdown("""
+    <div class="feature-mini">
+        <div style="font-size:52px;">🧠</div>
+        <h3>AI Intelligence</h3>
+        <p>
+        Advanced semantic understanding using Gemini AI and FAISS vector search.
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
+
+with mini2:
+    st.markdown("""
+    <div class="feature-mini">
+        <div style="font-size:52px;">📚</div>
+        <h3>Trusted Sources</h3>
+        <p>
+        Answers generated strictly from uploaded healthcare documents.
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
+
+with mini3:
+    st.markdown("""
+    <div class="feature-mini">
+        <div style="font-size:52px;">🛡️</div>
+        <h3>Safe Responses</h3>
+        <p>
+        Designed to provide professional and responsible medical information.
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
 # ---------------- SIDEBAR ----------------
 
 st.sidebar.title("⚙️ MediVerse Control Center")
