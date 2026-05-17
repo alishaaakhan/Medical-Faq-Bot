@@ -10,7 +10,7 @@ from pypdf import PdfReader
 # ---------------- PAGE CONFIG ----------------
 
 st.set_page_config(
-    page_title="MediVerse AI",
+    page_title="MediCare AI",
     page_icon="🩺",
     layout="wide",
     initial_sidebar_state="expanded"
@@ -30,7 +30,6 @@ html, body, [class*="css"] {
 /* MAIN BACKGROUND */
 
 .stApp {
-
     background-image:
     linear-gradient(
         rgba(240,248,255,0.82),
@@ -67,13 +66,9 @@ footer {
 }
 
 .hero h1 {
-
     font-size: 82px;
-
     font-weight: 800;
-
     line-height: 1;
-
     background: linear-gradient(
         90deg,
         #2563eb,
@@ -90,116 +85,58 @@ footer {
 }
 
 .hero p {
-
     font-size: 22px;
-
     color: #0f172a;
-
     font-weight: 500;
 }
 
-/* GLASS CONTAINER */
+/* GLASS MAIN CONTAINER */
 
 .glass {
-
     background: rgba(255,255,255,0.68);
-
     backdrop-filter: blur(20px);
-
     border-radius: 30px;
-
     padding: 35px;
-
     box-shadow: 0 10px 40px rgba(0,0,0,0.15);
-
     border: 1px solid rgba(255,255,255,0.35);
 }
 
 /* FEATURE CARDS */
 
 .card {
-
     background: rgba(255,255,255,0.92);
-
     border-radius: 24px;
-
     padding: 30px;
-
     text-align: center;
-
     box-shadow: 0 12px 25px rgba(0,0,0,0.08);
-
     transition: 0.4s;
-
     height: 260px;
 }
 
 .card:hover {
-
     transform: translateY(-10px) scale(1.02);
 }
 
 .icon {
-
     font-size: 58px;
-
     margin-bottom: 12px;
 }
 
 .card h3 {
-
     font-size: 26px;
-
     color: #0f172a;
-
     margin-bottom: 10px;
 }
 
 .card p {
-
     color: #475569;
-
     font-size: 15px;
-
     line-height: 1.7;
 }
 
-/* IMAGE SECTION */
-
-[data-testid="stImage"] {
-
-    display: flex;
-
-    justify-content: center;
-
-    align-items: center;
-}
-
-[data-testid="stImage"] img {
-
-    width: 100%;
-
-    height: 260px;
-
-    object-fit: cover;
-
-    border-radius: 24px;
-
-    box-shadow:
-    0 10px 30px rgba(0,0,0,0.12);
-
-    transition: 0.4s;
-}
-
-[data-testid="stImage"] img:hover {
-
-    transform: scale(1.03);
-}
-
-/* UPLOAD BOX */
+/* UPLOAD SECTION */
 
 .upload-box {
-
     background: linear-gradient(
         135deg,
         #2563eb,
@@ -209,63 +146,43 @@ footer {
     );
 
     border-radius: 24px;
-
     padding: 30px;
-
     text-align: center;
-
     color: white;
-
     margin-bottom: 25px;
-
     box-shadow: 0 10px 25px rgba(37,99,235,0.28);
 }
 
 .upload-box h2 {
-
     font-size: 34px;
 }
 
 /* QUESTION BOX */
 
 .question-box {
-
     background: rgba(255,255,255,0.92);
-
     padding: 25px;
-
     border-radius: 22px;
-
     margin-top: 20px;
-
     box-shadow: 0 10px 25px rgba(0,0,0,0.08);
 }
 
 /* INPUT */
 
 .stTextInput input {
-
     background-color: white;
-
     color: #111827;
-
     border-radius: 16px;
-
     padding: 18px;
-
     border: 2px solid #dbeafe;
-
     font-size: 17px;
 }
 
 /* BUTTON */
 
 .stButton>button {
-
     width: 100%;
-
     padding: 16px;
-
     border-radius: 16px;
 
     background: linear-gradient(
@@ -277,48 +194,34 @@ footer {
     );
 
     color: white;
-
     border: none;
-
     font-size: 18px;
-
     font-weight: 600;
 
     transition: 0.35s;
 }
 
 .stButton>button:hover {
-
     transform: scale(1.02);
 }
 
 /* ANSWER BOX */
 
 .answer-box {
-
     background: rgba(255,255,255,0.95);
-
     border-left: 8px solid #22c55e;
-
     border-radius: 22px;
-
     padding: 30px;
-
     color: #111827;
-
     font-size: 17px;
-
     line-height: 2;
-
     margin-top: 18px;
-
     box-shadow: 0 10px 30px rgba(0,0,0,0.08);
 }
 
 /* SIDEBAR */
 
 section[data-testid="stSidebar"] {
-
     background: linear-gradient(
         180deg,
         #020617,
@@ -328,85 +231,24 @@ section[data-testid="stSidebar"] {
 }
 
 section[data-testid="stSidebar"] * {
-
     color: white !important;
-}
-
-/* FLOATING BOT */
-
-.avatar {
-
-    position: fixed;
-
-    bottom: 25px;
-
-    right: 25px;
-
-    width: 95px;
-
-    height: 95px;
-
-    border-radius: 50%;
-
-    background: linear-gradient(
-        135deg,
-        #2563eb,
-        #06b6d4,
-        #14b8a6
-    );
-
-    display: flex;
-
-    justify-content: center;
-
-    align-items: center;
-
-    font-size: 45px;
-
-    box-shadow:
-    0 0 35px rgba(37,99,235,0.6);
-
-    animation: float 3s ease infinite;
-
-    z-index: 999;
-}
-
-@keyframes float {
-
-    0% {
-        transform: translateY(0px);
-    }
-
-    50% {
-        transform: translateY(-12px);
-    }
-
-    100% {
-        transform: translateY(0px);
-    }
 }
 
 /* FOOTER */
 
 .footer {
-
     text-align: center;
-
     margin-top: 40px;
-
     color: #0f172a;
-
     font-weight: 600;
-
     font-size: 16px;
 }
 
+/* TITLE */
+
 .section-title {
-
     color: #0f172a;
-
     font-size: 30px;
-
     font-weight: 700;
 }
 
@@ -417,203 +259,43 @@ section[data-testid="stSidebar"] * {
 
 st.markdown("""
 <div class="hero">
-    <h1>🩺 MediVerse AI</h1>
-    <p>Next Generation Medical FAQ Assistant</p>
+    <h1>🩺 MediCare AI</h1>
+    <p>Next Generation Medical FAQ Assistant </p>
 </div>
 """, unsafe_allow_html=True)
-
-# ---------------- MEDICAL IMAGE SECTION ----------------
-
-st.markdown("""
-<style>
-
-/* IMAGE ALIGNMENT */
-
-[data-testid="stImage"] {
-
-    display: flex;
-
-    justify-content: center;
-
-    align-items: center;
-}
-
-[data-testid="stImage"] img {
-
-    width: 100%;
-
-    height: 260px;
-
-    object-fit: cover;
-
-    border-radius: 24px;
-
-    box-shadow:
-    0 10px 30px rgba(0,0,0,0.12);
-
-    transition: 0.4s;
-}
-
-[data-testid="stImage"] img:hover {
-
-    transform: scale(1.03);
-}
-
-/* EXTRA SECTION */
-
-.extra-section {
-
-    margin-top: 60px;
-
-    background: rgba(255,255,255,0.75);
-
-    backdrop-filter: blur(18px);
-
-    border-radius: 28px;
-
-    padding: 40px;
-
-    box-shadow: 0 10px 30px rgba(0,0,0,0.10);
-}
-
-.extra-title {
-
-    text-align: center;
-
-    font-size: 42px;
-
-    font-weight: 800;
-
-    color: #0f172a;
-
-    margin-bottom: 15px;
-}
-
-.extra-text {
-
-    text-align: center;
-
-    font-size: 18px;
-
-    color: #334155;
-
-    line-height: 1.9;
-
-    margin-bottom: 35px;
-}
-
-.feature-mini {
-
-    background: rgba(255,255,255,0.92);
-
-    border-radius: 22px;
-
-    padding: 25px;
-
-    text-align: center;
-
-    box-shadow: 0 8px 22px rgba(0,0,0,0.08);
-
-    transition: 0.3s;
-}
-
-.feature-mini:hover {
-
-    transform: translateY(-8px);
-}
-
-.feature-mini h3 {
-
-    color: #0f172a;
-
-    margin-top: 12px;
-
-    margin-bottom: 10px;
-}
-
-.feature-mini p {
-
-    color: #475569;
-
-    font-size: 15px;
-
-    line-height: 1.7;
-}
-
-</style>
-""", unsafe_allow_html=True)
-
-# ---------------- TITLE ----------------
-
-st.markdown("""
-<div style="
-text-align:center;
-margin-top:20px;
-margin-bottom:30px;
-">
-
-<h2 style="
-font-size:42px;
-font-weight:800;
-color:#0f172a;
-margin-bottom:10px;
-">
-🏥 Smart Healthcare AI Platform
-</h2>
-
-<p style="
-font-size:18px;
-color:#334155;
-margin-bottom:35px;
-">
-AI-powered medical FAQ assistant using RAG, Gemini AI and trusted healthcare documents.
-</p>
-
-</div>
-""", unsafe_allow_html=True)
-
-# ---------------- IMAGES ----------------
-
-col1, col2, col3 = st.columns(3)
-
-with col1:
-    st.image(
-        "https://images.unsplash.com/photo-1584982751601-97dcc096659c?q=80&w=1200&auto=format&fit=crop",
-        use_container_width=True
-    )
-
-with col2:
-    st.image(
-        "https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=1200&auto=format&fit=crop",
-        use_container_width=True
-    )
-
-with col3:
-    st.image(
-        "https://images.unsplash.com/photo-1581595219315-a187dd40c322?q=80&w=1200&auto=format&fit=crop",
-        use_container_width=True
-    )
-
-# ---------------- GAP ----------------
-
-st.markdown("<br><br><br>", unsafe_allow_html=True)
-
 
 # ---------------- SIDEBAR ----------------
 
 st.sidebar.title("⚙️ MediVerse Control Center")
 
 try:
-
     genai.configure(api_key=st.secrets["GEMINI_API_KEY"])
 
     st.sidebar.success("✅ Gemini API Connected")
 
 except:
-
     st.sidebar.error("❌ API Key Missing")
-
     st.stop()
+
+st.sidebar.markdown("""
+### 📌 Supported Healthcare PDFs
+
+- Medical FAQ Documents
+- WHO Guidelines
+- Treatment Information
+- Hospital Manuals
+- Healthcare Policies
+- Medical Encyclopedia
+""")
+
+st.sidebar.info("""
+💡 Example Questions
+
+• What are diabetes symptoms?
+• What causes hypertension?
+• What is asthma treatment?
+• What precautions are used for COVID-19?
+""")
 
 # ---------------- FEATURE CARDS ----------------
 
@@ -625,7 +307,7 @@ with col1:
         <div class="icon">📄</div>
         <h3>Medical Knowledge Base</h3>
         <p>
-        Upload trusted healthcare PDFs and create intelligent AI medical assistance.
+        Upload trusted healthcare PDFs and create an intelligent AI-powered medical assistant.
         </p>
     </div>
     """, unsafe_allow_html=True)
@@ -636,7 +318,7 @@ with col2:
         <div class="icon">🧠</div>
         <h3>Semantic AI Search</h3>
         <p>
-        Powered by Gemini AI and FAISS for accurate medical retrieval.
+        Powered by Gemini AI and FAISS for highly accurate medical document retrieval.
         </p>
     </div>
     """, unsafe_allow_html=True)
@@ -647,10 +329,14 @@ with col3:
         <div class="icon">⚕️</div>
         <h3>Safe Healthcare Answers</h3>
         <p>
-        Professional answers strictly from uploaded documents.
+        Provides professional responses strictly from uploaded medical documents.
         </p>
     </div>
     """, unsafe_allow_html=True)
+
+st.write("")
+
+# ---------------- MAIN CONTAINER ----------------
 
 st.markdown('<div class="glass">', unsafe_allow_html=True)
 
@@ -660,12 +346,16 @@ st.markdown("""
 <div class="upload-box">
     <h2>📤 Upload Medical PDF</h2>
     <p>
-    Upload healthcare FAQs, WHO guidelines or treatment documents.
+    Upload healthcare FAQs, WHO guidelines, treatment documents,
+    medical encyclopedia or healthcare manuals.
     </p>
 </div>
 """, unsafe_allow_html=True)
 
-uploaded_file = st.file_uploader("", type="pdf")
+uploaded_file = st.file_uploader(
+    "",
+    type="pdf"
+)
 
 # ---------------- PDF PROCESS ----------------
 
@@ -692,6 +382,8 @@ if uploaded_file:
                 if text:
                     full_text += text + "\n"
 
+        # ---------------- CHUNKING ----------------
+
         def chunk_text(text, chunk_size=700, overlap=120):
 
             chunks = []
@@ -710,19 +402,29 @@ if uploaded_file:
 
         texts = chunk_text(full_text)
 
+        # ---------------- EMBEDDINGS ----------------
+
         with st.spinner("🧠 Building AI medical knowledge base..."):
 
-            model = SentenceTransformer("all-MiniLM-L6-v2")
+            model = SentenceTransformer(
+                "all-MiniLM-L6-v2"
+            )
 
-            embeddings = model.encode(texts).astype("float32")
+            embeddings = model.encode(
+                texts
+            ).astype("float32")
 
-            index = faiss.IndexFlatL2(embeddings.shape[1])
+            index = faiss.IndexFlatL2(
+                embeddings.shape[1]
+            )
 
             index.add(embeddings)
 
         st.success(
             f"✅ Medical knowledge base ready with {len(texts)} intelligent chunks."
         )
+
+        # ---------------- QUESTION ----------------
 
         st.markdown("""
         <div class="question-box">
@@ -735,21 +437,29 @@ if uploaded_file:
             placeholder="Example: What are the symptoms of pneumonia?"
         )
 
+        # ---------------- ANSWER BUTTON ----------------
+
         if st.button("🚀 Generate AI Medical Answer"):
 
             if question.strip() == "":
-
                 st.warning("Please enter a medical question.")
 
             else:
 
-                q_emb = model.encode([question]).astype("float32")
+                q_emb = model.encode(
+                    [question]
+                ).astype("float32")
 
-                distances, indices = index.search(q_emb, k=4)
+                distances, indices = index.search(
+                    q_emb,
+                    k=4
+                )
 
                 context = "\n\n".join(
                     [texts[i] for i in indices[0]]
                 )
+
+                # ---------------- PROMPT ----------------
 
                 prompt = f"""
 You are an advanced AI Medical FAQ Assistant.
@@ -771,35 +481,45 @@ QUESTION:
 ANSWER:
 """
 
-                llm = genai.GenerativeModel(
-                    "gemini-2.5-flash-lite"
-                )
+                try:
 
-                with st.spinner("🤖 AI is analyzing medical information..."):
+                    llm = genai.GenerativeModel(
+                        "gemini-2.5-flash-lite"
+                    )
 
-                    response = llm.generate_content(prompt)
+                    with st.spinner("🤖 AI is analyzing medical information..."):
 
-                st.markdown("## 🩺 AI Medical Answer")
+                        response = llm.generate_content(prompt)
 
-                st.markdown(
-                    f"""
-                    <div class="answer-box">
-                    {response.text}
-                    </div>
-                    """,
-                    unsafe_allow_html=True
-                )
+                    st.markdown("## 🩺 AI Medical Answer")
 
-                with st.expander("📚 View Source Context"):
+                    st.markdown(
+                        f"""
+                        <div class="answer-box">
+                        {response.text}
+                        </div>
+                        """,
+                        unsafe_allow_html=True
+                    )
 
-                    st.write(context[:2000])
+                    # ---------------- SOURCE ----------------
 
-                st.warning("""
+                    with st.expander("📚 View Source Context"):
+
+                        st.write(context[:2000])
+
+                    # ---------------- DISCLAIMER ----------------
+
+                    st.warning("""
 ⚠️ Medical Disclaimer:
 This chatbot provides information only from uploaded documents.
 It does not replace professional medical consultation.
 Always consult certified healthcare professionals.
 """)
+
+                except Exception as e:
+
+                    st.error(f"Gemini Error: {e}")
 
     finally:
 
@@ -807,7 +527,9 @@ Always consult certified healthcare professionals.
 
 st.markdown("</div>", unsafe_allow_html=True)
 
-# ---------------- FLOATING BOT ----------------
+# =====================================================
+# FLOATING BOT
+# =====================================================
 
 st.markdown("""
 <div class='avatar'>
@@ -819,6 +541,6 @@ st.markdown("""
 
 st.markdown("""
 <div class="footer">
-Made by Alisha Khan ❤️
+Made by Alisha Khan❤️
 </div>
 """, unsafe_allow_html=True)
