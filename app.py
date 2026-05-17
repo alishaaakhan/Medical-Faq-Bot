@@ -781,14 +781,9 @@ st.markdown("""
 
 <div class="floating-bot">
 
-    <div class="bot-message">
-        👋 Hi! I'm MediVerse AI <br>
-        Ask medical questions from uploaded healthcare PDFs.
-    </div>
-
-    <div class="bot-circle">
-        🤖
-    </div>
+    <div class='avatar'>
+🤖
+</div>
 
 </div>
 """, unsafe_allow_html=True)
