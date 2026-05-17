@@ -10,42 +10,42 @@ from pypdf import PdfReader
 # ---------------- PAGE CONFIG ----------------
 
 st.set_page_config(
-    page_title="MediSphere AI",
+    page_title="MediAura AI",
     page_icon="🩺",
     layout="wide",
     initial_sidebar_state="expanded"
 )
 
-# ---------------- ULTIMATE UI ----------------
+# ---------------- CUSTOM CSS ----------------
 
 st.markdown("""
 <style>
 
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600;700;800;900&display=swap');
 
-html, body, [class*="css"] {
-    font-family: 'Outfit', sans-serif;
+html, body, [class*="css"]  {
+    font-family: 'Urbanist', sans-serif;
 }
 
-/* MAIN BACKGROUND */
+/* MAIN APP */
 
 .stApp {
 
-    background-image:
+    background:
     linear-gradient(
-        rgba(240,248,255,0.82),
-        rgba(240,248,255,0.86)
+        rgba(240,248,255,0.78),
+        rgba(240,248,255,0.84)
     ),
 
-    url("https://images.unsplash.com/photo-1666214280391-8ff5bd3c0bf0?q=80&w=2070&auto=format&fit=crop");
+    url("https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=2070&auto=format&fit=crop");
 
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
     background-attachment: fixed;
+    background-repeat: no-repeat;
 }
 
-/* REMOVE STREAMLIT DEFAULT */
+/* HIDE STREAMLIT */
 
 #MainMenu {
     visibility: hidden;
@@ -59,22 +59,55 @@ footer {
     visibility: hidden;
 }
 
-/* HERO SECTION */
+/* TOP NAV */
+
+.topbar {
+
+    width: 100%;
+
+    padding: 16px;
+
+    border-radius: 22px;
+
+    background: linear-gradient(
+        90deg,
+        rgba(37,99,235,0.92),
+        rgba(6,182,212,0.92),
+        rgba(20,184,166,0.92)
+    );
+
+    color: white;
+
+    text-align: center;
+
+    font-size: 17px;
+
+    font-weight: 700;
+
+    box-shadow: 0 10px 30px rgba(37,99,235,0.30);
+
+    margin-bottom: 20px;
+}
+
+/* HERO */
 
 .hero {
 
     text-align: center;
 
-    padding-top: 15px;
-    padding-bottom: 30px;
+    padding-top: 10px;
+    padding-bottom: 25px;
 }
 
 .hero h1 {
 
-    font-size: 90px;
-    font-weight: 800;
+    font-size: 96px;
+
+    font-weight: 900;
 
     line-height: 1;
+
+    margin-bottom: 10px;
 
     background: linear-gradient(
         90deg,
@@ -87,58 +120,32 @@ footer {
 
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-
-    margin-bottom: 12px;
 }
 
 .hero p {
 
     font-size: 24px;
+
     color: #0f172a;
-    font-weight: 500;
-}
-
-/* TOP BANNER */
-
-.top-banner {
-
-    background: linear-gradient(
-        90deg,
-        rgba(37,99,235,0.9),
-        rgba(6,182,212,0.9),
-        rgba(20,184,166,0.9)
-    );
-
-    color: white;
-
-    padding: 14px;
-
-    border-radius: 18px;
-
-    text-align: center;
-
-    margin-bottom: 20px;
 
     font-weight: 600;
-
-    box-shadow: 0 10px 25px rgba(37,99,235,0.25);
 }
 
-/* GLASS MAIN */
+/* GLASS CONTAINER */
 
 .glass {
 
     background: rgba(255,255,255,0.68);
 
-    backdrop-filter: blur(22px);
+    backdrop-filter: blur(24px);
 
-    border-radius: 34px;
+    border-radius: 36px;
 
-    padding: 35px;
+    padding: 40px;
 
-    box-shadow: 0 10px 40px rgba(0,0,0,0.14);
+    border: 1px solid rgba(255,255,255,0.30);
 
-    border: 1px solid rgba(255,255,255,0.35);
+    box-shadow: 0 14px 45px rgba(0,0,0,0.15);
 }
 
 /* FEATURE CARDS */
@@ -147,34 +154,34 @@ footer {
 
     background: rgba(255,255,255,0.94);
 
-    border-radius: 28px;
+    border-radius: 30px;
 
-    padding: 30px;
+    padding: 34px;
 
     text-align: center;
 
-    box-shadow: 0 14px 30px rgba(0,0,0,0.08);
+    height: 300px;
 
     transition: 0.4s;
 
-    height: 280px;
+    box-shadow: 0 14px 35px rgba(0,0,0,0.08);
 }
 
 .card:hover {
 
-    transform: translateY(-12px) scale(1.03);
+    transform: translateY(-14px) scale(1.03);
 }
 
 .icon {
 
-    font-size: 68px;
+    font-size: 76px;
 
-    margin-bottom: 12px;
+    margin-bottom: 14px;
 }
 
 .card h3 {
 
-    font-size: 28px;
+    font-size: 30px;
 
     color: #0f172a;
 
@@ -185,7 +192,7 @@ footer {
 
     color: #475569;
 
-    line-height: 1.8;
+    line-height: 1.9;
 
     font-size: 15px;
 }
@@ -202,24 +209,29 @@ footer {
         #14b8a6
     );
 
-    padding: 35px;
+    padding: 40px;
 
-    border-radius: 28px;
+    border-radius: 30px;
 
     text-align: center;
 
     color: white;
 
-    margin-bottom: 25px;
+    margin-bottom: 30px;
 
-    box-shadow: 0 14px 35px rgba(37,99,235,0.3);
+    box-shadow: 0 16px 40px rgba(37,99,235,0.30);
 }
 
 .upload-box h2 {
 
-    font-size: 38px;
+    font-size: 42px;
 
-    margin-bottom: 10px;
+    margin-bottom: 12px;
+}
+
+.upload-box p {
+
+    font-size: 17px;
 }
 
 /* QUESTION BOX */
@@ -228,30 +240,30 @@ footer {
 
     background: rgba(255,255,255,0.94);
 
-    padding: 28px;
+    padding: 30px;
 
-    border-radius: 24px;
+    border-radius: 26px;
 
-    margin-top: 25px;
+    margin-top: 20px;
 
-    box-shadow: 0 10px 28px rgba(0,0,0,0.08);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.08);
 }
 
 /* INPUT */
 
 .stTextInput input {
 
-    background-color: white;
+    background: white;
 
     color: #111827;
 
     border-radius: 18px;
 
-    padding: 20px;
+    padding: 22px;
 
     border: 2px solid #bfdbfe;
 
-    font-size: 17px;
+    font-size: 18px;
 }
 
 /* BUTTON */
@@ -264,6 +276,14 @@ footer {
 
     border-radius: 18px;
 
+    border: none;
+
+    color: white;
+
+    font-size: 18px;
+
+    font-weight: 700;
+
     background: linear-gradient(
         90deg,
         #2563eb,
@@ -272,17 +292,9 @@ footer {
         #14b8a6
     );
 
-    color: white;
-
-    border: none;
-
-    font-size: 18px;
-
-    font-weight: 700;
+    box-shadow: 0 10px 25px rgba(37,99,235,0.30);
 
     transition: 0.35s;
-
-    box-shadow: 0 10px 22px rgba(37,99,235,0.28);
 }
 
 .stButton>button:hover {
@@ -296,21 +308,21 @@ footer {
 
     background: rgba(255,255,255,0.96);
 
-    border-left: 9px solid #22c55e;
+    border-left: 10px solid #22c55e;
 
-    border-radius: 26px;
+    border-radius: 28px;
 
-    padding: 32px;
+    padding: 35px;
 
-    color: #111827;
+    margin-top: 20px;
 
     font-size: 17px;
 
     line-height: 2;
 
-    margin-top: 18px;
+    color: #111827;
 
-    box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.08);
 }
 
 /* SIDEBAR */
@@ -336,47 +348,47 @@ section[data-testid="stSidebar"] * {
 
     text-align: center;
 
-    margin-top: 40px;
+    margin-top: 45px;
 
-    color: #0f172a;
+    font-size: 16px;
 
     font-weight: 700;
 
-    font-size: 16px;
+    color: #0f172a;
 }
-
-/* TITLES */
 
 .section-title {
 
     color: #0f172a;
 
-    font-size: 32px;
+    font-size: 34px;
 
-    font-weight: 700;
+    font-weight: 800;
 }
 
 </style>
 """, unsafe_allow_html=True)
 
-# ---------------- HERO ----------------
+# ---------------- TOPBAR ----------------
 
 st.markdown("""
-<div class="top-banner">
-🚀 AI-Powered Medical Knowledge Assistant • Gemini + FAISS + RAG Technology
+<div class="topbar">
+🚀 Next Generation Medical FAQ Assistant • Gemini AI • FAISS • RAG Architecture
 </div>
 """, unsafe_allow_html=True)
 
+# ---------------- HERO ----------------
+
 st.markdown("""
 <div class="hero">
-    <h1>🩺 MediSphere AI</h1>
-    <p>Intelligent Medical FAQ Assistant for Modern Healthcare</p>
+    <h1>🩺 MediAura AI</h1>
+    <p>Smart Healthcare Intelligence Powered by Artificial Intelligence</p>
 </div>
 """, unsafe_allow_html=True)
 
 # ---------------- SIDEBAR ----------------
 
-st.sidebar.title("⚙️ MediSphere Control Panel")
+st.sidebar.title("⚙️ MediAura Dashboard")
 
 try:
 
@@ -391,23 +403,23 @@ except:
     st.stop()
 
 st.sidebar.markdown("""
-### 📌 Supported Medical PDFs
+### 📌 Supported Documents
 
 - WHO Guidelines
-- Medical FAQ Documents
-- Healthcare Policies
+- Healthcare Manuals
+- Medical FAQ PDFs
 - Treatment Information
-- Hospital Manuals
 - Medical Encyclopedia
+- Hospital Policies
 """)
 
 st.sidebar.info("""
 💡 Example Questions
 
-• What are symptoms of pneumonia?
-• What causes hypertension?
-• What precautions prevent dengue?
-• What are asthma treatments?
+• What are symptoms of diabetes?
+• What causes asthma?
+• How to prevent dengue?
+• What are COVID precautions?
 """)
 
 # ---------------- FEATURE CARDS ----------------
@@ -421,7 +433,7 @@ with col1:
         <div class="icon">📄</div>
         <h3>Medical Knowledge</h3>
         <p>
-        Upload healthcare PDFs and create your intelligent AI medical knowledge system.
+        Upload trusted medical PDFs and build your intelligent healthcare assistant.
         </p>
     </div>
     """, unsafe_allow_html=True)
@@ -433,7 +445,7 @@ with col2:
         <div class="icon">🧠</div>
         <h3>AI Semantic Search</h3>
         <p>
-        Advanced semantic retrieval powered by Gemini AI and FAISS vector search.
+        Advanced AI retrieval powered by Gemini AI and FAISS vector search.
         </p>
     </div>
     """, unsafe_allow_html=True)
@@ -443,16 +455,16 @@ with col3:
     st.markdown("""
     <div class="card">
         <div class="icon">⚕️</div>
-        <h3>Safe Medical Answers</h3>
+        <h3>Reliable Answers</h3>
         <p>
-        Provides safe and professional healthcare responses from trusted uploaded documents.
+        Provides professional healthcare answers strictly from uploaded documents.
         </p>
     </div>
     """, unsafe_allow_html=True)
 
 st.write("")
 
-# ---------------- MAIN GLASS ----------------
+# ---------------- MAIN CONTAINER ----------------
 
 st.markdown('<div class="glass">', unsafe_allow_html=True)
 
@@ -462,8 +474,8 @@ st.markdown("""
 <div class="upload-box">
     <h2>📤 Upload Medical PDF</h2>
     <p>
-    Upload healthcare FAQs, WHO guidelines, medical encyclopedia,
-    treatment manuals, or healthcare policy documents.
+    Upload WHO guidelines, treatment documents,
+    healthcare manuals or medical encyclopedia PDFs.
     </p>
 </div>
 """, unsafe_allow_html=True)
@@ -577,18 +589,16 @@ if uploaded_file:
                     [texts[i] for i in indices[0]]
                 )
 
-                # ---------------- PROMPT ----------------
-
                 prompt = f'''
 You are an advanced AI Medical FAQ Assistant.
 
 STRICT RULES:
-1. Answer ONLY from the provided context.
-2. If answer not found say:
-"The information is not available in the uploaded medical documents."
+1. Answer ONLY from provided context.
+2. If answer is unavailable say:
+"The information is not available in uploaded medical documents."
 3. Never generate fake medical advice.
 4. Keep responses professional and safe.
-5. Add a short medical disclaimer.
+5. Add a short healthcare disclaimer.
 
 CONTEXT:
 {context}
@@ -620,13 +630,9 @@ ANSWER:
                         unsafe_allow_html=True
                     )
 
-                    # ---------------- SOURCE ----------------
-
                     with st.expander("📚 View Source Context"):
 
                         st.write(context[:2000])
-
-                    # ---------------- DISCLAIMER ----------------
 
                     st.warning("""
 ⚠️ Medical Disclaimer:
