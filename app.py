@@ -671,10 +671,13 @@ st.markdown("""
     border-radius: 50%;
 
     background: linear-gradient(
-        135deg,
-        #4F46E5,
-        #8B5CF6,
-        #EC4899
+       135deg,
+        #e0f2fe 0%,
+        #dbeafe 20%,
+        #cffafe 40%,
+        #dcfce7 60%,
+        #f0fdf4 80%,
+        #ecfeff 100%
     );
 
     display: flex;
