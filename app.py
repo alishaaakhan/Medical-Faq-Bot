@@ -649,25 +649,20 @@ Always consult certified healthcare professionals.
 
 st.markdown("</div>", unsafe_allow_html=True)
 
-# ---------------- FLOATING AI BOT ----------------
+# =====================================================
+# FLOATING AI BOT CSS
+# =====================================================
 
 st.markdown("""
 <style>
 
-.floating-bot {
+.avatar {
 
     position: fixed;
 
-    bottom: 30px;
+    bottom: 25px;
 
-    right: 30px;
-
-    z-index: 9999;
-
-    animation: botFloat 3s ease-in-out infinite;
-}
-
-.bot-circle {
+    right: 25px;
 
     width: 95px;
 
@@ -677,75 +672,28 @@ st.markdown("""
 
     background: linear-gradient(
         135deg,
-        #2563eb,
-        #06b6d4,
-        #14b8a6
+        #4F46E5,
+        #8B5CF6,
+        #EC4899
     );
 
     display: flex;
 
-    align-items: center;
-
     justify-content: center;
 
-    font-size: 46px;
+    align-items: center;
 
-    color: white;
+    font-size: 45px;
 
     box-shadow:
-    0 0 20px rgba(37,99,235,0.45),
-    0 0 45px rgba(6,182,212,0.35);
+    0 0 35px rgba(168,85,247,0.9);
 
-    cursor: pointer;
+    animation: float 3s ease infinite;
 
-    position: relative;
+    z-index: 999;
 }
 
-.bot-circle::before {
-
-    content: "";
-
-    position: absolute;
-
-    width: 115px;
-
-    height: 115px;
-
-    border-radius: 50%;
-
-    border: 3px solid rgba(37,99,235,0.35);
-
-    animation: pulse 2s infinite;
-}
-
-.bot-message {
-
-    position: absolute;
-
-    bottom: 115px;
-
-    right: 0;
-
-    width: 240px;
-
-    background: rgba(255,255,255,0.96);
-
-    padding: 16px;
-
-    border-radius: 20px;
-
-    color: #0f172a;
-
-    font-size: 14px;
-
-    font-weight: 600;
-
-    box-shadow: 0 10px 30px rgba(0,0,0,0.12);
-
-    backdrop-filter: blur(12px);
-}
-
-@keyframes botFloat {
+@keyframes float {
 
     0% {
         transform: translateY(0px);
@@ -760,34 +708,18 @@ st.markdown("""
     }
 }
 
-@keyframes pulse {
-
-    0% {
-        transform: scale(0.9);
-        opacity: 1;
-    }
-
-    70% {
-        transform: scale(1.15);
-        opacity: 0;
-    }
-
-    100% {
-        opacity: 0;
-    }
-}
-
 </style>
-
-<div class="floating-bot">
-
-    <div class='avatar'>
-🤖
-</div>
-
-</div>
 """, unsafe_allow_html=True)
 
+# =====================================================
+# FLOATING AI BOT
+# =====================================================
+
+st.markdown("""
+<div class='avatar'>
+🤖
+</div>
+""", unsafe_allow_html=True)
 # ---------------- FOOTER ----------------
 
 st.markdown("""
