@@ -527,6 +527,16 @@ Always consult certified healthcare professionals.
 
 st.markdown("</div>", unsafe_allow_html=True)
 
+# =====================================================
+# FLOATING BOT
+# =====================================================
+
+st.markdown("""
+<div class='avatar'>
+🤖
+</div>
+""", unsafe_allow_html=True)
+
 # ---------------- FOOTER ----------------
 
 st.markdown("""
