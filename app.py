@@ -528,7 +528,72 @@ Always consult certified healthcare professionals.
 st.markdown("</div>", unsafe_allow_html=True)
 
 # =====================================================
-# FLOATING BOT
+# FLOATING AI BOT CSS
+# =====================================================
+
+st.markdown("""
+<style>
+
+.avatar {
+
+    position: fixed;
+
+    bottom: 25px;
+
+    right: 25px;
+
+    width: 95px;
+
+    height: 95px;
+
+    border-radius: 50%;
+
+    background: linear-gradient(
+        135deg,
+        #eff6ff 0%,
+        #dbeafe 20%,
+        #bfdbfe 40%,
+        #a5f3fc 60%,
+        #99f6e4 80%,
+        #dcfce7 100%
+    );
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    font-size: 45px;
+
+    box-shadow:
+    0 0 35px rgba(168,85,247,0.9);
+
+    animation: float 3s ease infinite;
+
+    z-index: 999;
+}
+
+@keyframes float {
+
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+</style>
+""", unsafe_allow_html=True)
+
+# =====================================================
+# FLOATING AI BOT
 # =====================================================
 
 st.markdown("""
