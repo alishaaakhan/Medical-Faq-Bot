@@ -10,13 +10,13 @@ from pypdf import PdfReader
 # ---------------- PAGE CONFIG ----------------
 
 st.set_page_config(
-    page_title="MediNova AI",
-    page_icon="🏥",
+    page_title="MediVerse AI",
+    page_icon="🩺",
     layout="wide",
     initial_sidebar_state="expanded"
 )
 
-# ---------------- ADVANCED UI ----------------
+# ---------------- ULTRA PREMIUM UI ----------------
 
 st.markdown("""
 <style>
@@ -31,13 +31,16 @@ html, body, [class*="css"] {
 
 .stApp {
     background-image:
-    linear-gradient(rgba(240,248,255,0.86), rgba(240,248,255,0.88)),
-    url("https://images.unsplash.com/photo-1584515933487-779824d29309?q=80&w=2070&auto=format&fit=crop");
+    linear-gradient(
+        rgba(240,248,255,0.82),
+        rgba(240,248,255,0.85)
+    ),
+    url("https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?q=80&w=2070&auto=format&fit=crop");
 
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
     background-attachment: fixed;
+    background-repeat: no-repeat;
 }
 
 /* REMOVE STREAMLIT DEFAULT */
@@ -46,11 +49,11 @@ html, body, [class*="css"] {
     visibility: hidden;
 }
 
-footer {
+header {
     visibility: hidden;
 }
 
-header {
+footer {
     visibility: hidden;
 }
 
@@ -59,32 +62,42 @@ header {
 .hero {
     text-align: center;
     padding-top: 10px;
-    padding-bottom: 25px;
+    padding-bottom: 30px;
 }
 
 .hero h1 {
-    font-size: 72px;
+    font-size: 82px;
     font-weight: 800;
-    background: linear-gradient(90deg,#2563eb,#0891b2,#14b8a6,#22c55e);
+    line-height: 1;
+    background: linear-gradient(
+        90deg,
+        #2563eb,
+        #0891b2,
+        #06b6d4,
+        #14b8a6,
+        #22c55e
+    );
+
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    margin-bottom: 8px;
+
+    margin-bottom: 10px;
 }
 
 .hero p {
-    font-size: 20px;
+    font-size: 22px;
     color: #0f172a;
     font-weight: 500;
 }
 
-/* GLASS CONTAINER */
+/* GLASS MAIN CONTAINER */
 
-.glass-container {
-    background: rgba(255,255,255,0.72);
-    backdrop-filter: blur(18px);
-    border-radius: 28px;
-    padding: 30px;
-    box-shadow: 0 10px 35px rgba(0,0,0,0.12);
+.glass {
+    background: rgba(255,255,255,0.68);
+    backdrop-filter: blur(20px);
+    border-radius: 30px;
+    padding: 35px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
     border: 1px solid rgba(255,255,255,0.35);
 }
 
@@ -92,53 +105,66 @@ header {
 
 .card {
     background: rgba(255,255,255,0.92);
-    border-radius: 22px;
-    padding: 25px;
+    border-radius: 24px;
+    padding: 30px;
     text-align: center;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-    transition: 0.35s;
-    height: 210px;
+    box-shadow: 0 12px 25px rgba(0,0,0,0.08);
+    transition: 0.4s;
+    height: 260px;
 }
 
 .card:hover {
-    transform: translateY(-8px);
+    transform: translateY(-10px) scale(1.02);
 }
 
-.card-icon {
-    font-size: 48px;
-    margin-bottom: 10px;
+.icon {
+    font-size: 58px;
+    margin-bottom: 12px;
 }
 
 .card h3 {
+    font-size: 26px;
     color: #0f172a;
-    font-size: 24px;
+    margin-bottom: 10px;
 }
 
 .card p {
     color: #475569;
     font-size: 15px;
+    line-height: 1.7;
 }
 
-/* UPLOAD BOX */
+/* UPLOAD SECTION */
 
 .upload-box {
-    background: linear-gradient(135deg,#2563eb,#06b6d4,#14b8a6);
-    padding: 22px;
-    border-radius: 20px;
+    background: linear-gradient(
+        135deg,
+        #2563eb,
+        #0891b2,
+        #06b6d4,
+        #14b8a6
+    );
+
+    border-radius: 24px;
+    padding: 30px;
     text-align: center;
     color: white;
-    margin-bottom: 20px;
-    box-shadow: 0 8px 20px rgba(37,99,235,0.25);
+    margin-bottom: 25px;
+    box-shadow: 0 10px 25px rgba(37,99,235,0.28);
 }
 
-/* QUESTION SECTION */
+.upload-box h2 {
+    font-size: 34px;
+}
+
+/* QUESTION BOX */
 
 .question-box {
-    background: rgba(255,255,255,0.9);
-    padding: 22px;
-    border-radius: 20px;
+    background: rgba(255,255,255,0.92);
+    padding: 25px;
+    border-radius: 22px;
     margin-top: 20px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
 }
 
 /* INPUT */
@@ -146,25 +172,33 @@ header {
 .stTextInput input {
     background-color: white;
     color: #111827;
-    border-radius: 15px;
-    padding: 16px;
+    border-radius: 16px;
+    padding: 18px;
     border: 2px solid #dbeafe;
-    font-size: 16px;
+    font-size: 17px;
 }
 
 /* BUTTON */
 
 .stButton>button {
     width: 100%;
-    background: linear-gradient(90deg,#2563eb,#06b6d4,#14b8a6);
+    padding: 16px;
+    border-radius: 16px;
+
+    background: linear-gradient(
+        90deg,
+        #2563eb,
+        #0891b2,
+        #06b6d4,
+        #14b8a6
+    );
+
     color: white;
     border: none;
-    padding: 15px;
-    border-radius: 15px;
-    font-size: 17px;
+    font-size: 18px;
     font-weight: 600;
-    transition: 0.3s;
-    margin-top: 10px;
+
+    transition: 0.35s;
 }
 
 .stButton>button:hover {
@@ -174,21 +208,26 @@ header {
 /* ANSWER BOX */
 
 .answer-box {
-    background: rgba(255,255,255,0.96);
+    background: rgba(255,255,255,0.95);
     border-left: 8px solid #22c55e;
-    padding: 25px;
-    border-radius: 18px;
+    border-radius: 22px;
+    padding: 30px;
     color: #111827;
-    font-size: 16px;
-    line-height: 1.9;
-    margin-top: 15px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    font-size: 17px;
+    line-height: 2;
+    margin-top: 18px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
 }
 
 /* SIDEBAR */
 
 section[data-testid="stSidebar"] {
-    background: linear-gradient(180deg,#0f172a,#111827,#1e293b);
+    background: linear-gradient(
+        180deg,
+        #020617,
+        #0f172a,
+        #111827
+    );
 }
 
 section[data-testid="stSidebar"] * {
@@ -199,37 +238,39 @@ section[data-testid="stSidebar"] * {
 
 .footer {
     text-align: center;
+    margin-top: 40px;
     color: #0f172a;
-    margin-top: 35px;
     font-weight: 600;
-    font-size: 15px;
+    font-size: 16px;
 }
 
-/* TITLES */
+/* TITLE */
 
 .section-title {
     color: #0f172a;
+    font-size: 30px;
     font-weight: 700;
 }
 
 </style>
 """, unsafe_allow_html=True)
 
-# ---------------- HERO SECTION ----------------
+# ---------------- HERO ----------------
 
 st.markdown("""
 <div class="hero">
-    <h1>🏥 MediNova AI</h1>
-    <p>Advanced Medical FAQ Assistant using Gemini + FAISS + RAG Technology</p>
+    <h1>🩺 MediVerse AI</h1>
+    <p>Next Generation Medical FAQ Assistant powered by Gemini + FAISS + RAG</p>
 </div>
 """, unsafe_allow_html=True)
 
 # ---------------- SIDEBAR ----------------
 
-st.sidebar.title("⚙️ MediNova Control Panel")
+st.sidebar.title("⚙️ MediVerse Control Center")
 
 try:
     genai.configure(api_key=st.secrets["GEMINI_API_KEY"])
+
     st.sidebar.success("✅ Gemini API Connected")
 
 except:
@@ -237,22 +278,23 @@ except:
     st.stop()
 
 st.sidebar.markdown("""
-### 📌 Supported Medical Documents
+### 📌 Supported Healthcare PDFs
 
-- Medical FAQ PDFs
+- Medical FAQ Documents
 - WHO Guidelines
-- Healthcare Policies
 - Treatment Information
 - Hospital Manuals
+- Healthcare Policies
 - Medical Encyclopedia
 """)
 
 st.sidebar.info("""
-💡 Example Questions:
-- What are diabetes symptoms?
-- What causes hypertension?
-- What are asthma treatments?
-- What precautions are used for COVID-19?
+💡 Example Questions
+
+• What are diabetes symptoms?
+• What causes hypertension?
+• What is asthma treatment?
+• What precautions are used for COVID-19?
 """)
 
 # ---------------- FEATURE CARDS ----------------
@@ -262,42 +304,51 @@ col1, col2, col3 = st.columns(3)
 with col1:
     st.markdown("""
     <div class="card">
-        <div class="card-icon">📄</div>
-        <h3>Medical Knowledge</h3>
-        <p>Upload trusted healthcare PDFs and build your AI medical knowledge base.</p>
+        <div class="icon">📄</div>
+        <h3>Medical Knowledge Base</h3>
+        <p>
+        Upload trusted healthcare PDFs and create an intelligent AI-powered medical assistant.
+        </p>
     </div>
     """, unsafe_allow_html=True)
 
 with col2:
     st.markdown("""
     <div class="card">
-        <div class="card-icon">🧠</div>
-        <h3>AI Semantic Search</h3>
-        <p>Powered by Gemini AI and FAISS for highly accurate document retrieval.</p>
+        <div class="icon">🧠</div>
+        <h3>Semantic AI Search</h3>
+        <p>
+        Powered by Gemini AI and FAISS for highly accurate medical document retrieval.
+        </p>
     </div>
     """, unsafe_allow_html=True)
 
 with col3:
     st.markdown("""
     <div class="card">
-        <div class="card-icon">⚕️</div>
+        <div class="icon">⚕️</div>
         <h3>Safe Healthcare Answers</h3>
-        <p>Provides professional answers strictly from uploaded medical documents.</p>
+        <p>
+        Provides professional responses strictly from uploaded medical documents.
+        </p>
     </div>
     """, unsafe_allow_html=True)
 
 st.write("")
 
-# ---------------- MAIN GLASS CONTAINER ----------------
+# ---------------- MAIN CONTAINER ----------------
 
-st.markdown('<div class="glass-container">', unsafe_allow_html=True)
+st.markdown('<div class="glass">', unsafe_allow_html=True)
 
-# ---------------- UPLOAD ----------------
+# ---------------- UPLOAD BOX ----------------
 
 st.markdown("""
 <div class="upload-box">
     <h2>📤 Upload Medical PDF</h2>
-    <p>Upload healthcare FAQs, medical manuals, WHO guidelines, or treatment information.</p>
+    <p>
+    Upload healthcare FAQs, WHO guidelines, treatment documents,
+    medical encyclopedia or healthcare manuals.
+    </p>
 </div>
 """, unsafe_allow_html=True)
 
@@ -318,7 +369,7 @@ if uploaded_file:
 
     try:
 
-        with st.spinner("📚 Extracting medical knowledge from PDF..."):
+        with st.spinner("📚 Extracting medical knowledge..."):
 
             reader = PdfReader(tmp_path)
 
@@ -370,14 +421,14 @@ if uploaded_file:
             index.add(embeddings)
 
         st.success(
-            f"✅ Medical knowledge base ready with {len(texts)} document chunks."
+            f"✅ Medical knowledge base ready with {len(texts)} intelligent chunks."
         )
 
-        # ---------------- QUESTION SECTION ----------------
+        # ---------------- QUESTION ----------------
 
         st.markdown("""
         <div class="question-box">
-            <h3 class="section-title">💬 Ask Your Medical Question</h3>
+            <h2 class="section-title">💬 Ask Your Medical Question</h2>
         </div>
         """, unsafe_allow_html=True)
 
@@ -388,7 +439,7 @@ if uploaded_file:
 
         # ---------------- ANSWER BUTTON ----------------
 
-        if st.button("🔍 Generate AI Medical Answer"):
+        if st.button("🚀 Generate AI Medical Answer"):
 
             if question.strip() == "":
                 st.warning("Please enter a medical question.")
@@ -414,13 +465,12 @@ if uploaded_file:
 You are an advanced AI Medical FAQ Assistant.
 
 STRICT RULES:
-1. Answer ONLY from the provided context.
+1. Answer ONLY using provided context.
 2. If answer not found say:
 "The information is not available in the uploaded medical documents."
 3. Never generate fake medical advice.
 4. Keep responses professional and safe.
 5. Add a short healthcare disclaimer.
-6. Use source-based answering style.
 
 CONTEXT:
 {context}
