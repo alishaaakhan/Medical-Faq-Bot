@@ -399,7 +399,54 @@ st.markdown("""
     <p>Next Generation Medical FAQ Assistant </p>
 </div>
 """, unsafe_allow_html=True)
+# ---------------- MEDICAL IMAGE SECTION ----------------
 
+st.markdown("""
+<div style="
+text-align:center;
+margin-top:20px;
+margin-bottom:30px;
+">
+
+<h2 style="
+font-size:42px;
+font-weight:800;
+color:#0f172a;
+margin-bottom:10px;
+">
+🏥 Smart Healthcare AI Platform
+</h2>
+
+<p style="
+font-size:18px;
+color:#334155;
+margin-bottom:35px;
+">
+AI-powered medical FAQ assistant using RAG, Gemini AI and trusted healthcare documents.
+</p>
+
+</div>
+""", unsafe_allow_html=True)
+
+img1, img2, img3 = st.columns(3)
+
+with img1:
+    st.image(
+        "https://images.unsplash.com/photo-1584982751601-97dcc096659c?q=80&w=1200&auto=format&fit=crop",
+        use_container_width=True
+    )
+
+with img2:
+    st.image(
+        "https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=1200&auto=format&fit=crop",
+        use_container_width=True
+    )
+
+with img3:
+    st.image(
+        "https://images.unsplash.com/photo-1581595219315-a187dd40c322?q=80&w=1200&auto=format&fit=crop",
+        use_container_width=True
+    )
 # ---------------- SIDEBAR ----------------
 
 st.sidebar.title("⚙️ MediVerse Control Center")
