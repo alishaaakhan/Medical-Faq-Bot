@@ -16,7 +16,7 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# ---------------- PREMIUM UI ----------------
+# ---------------- ULTRA PREMIUM UI ----------------
 
 st.markdown("""
 <style>
@@ -27,25 +27,24 @@ html, body, [class*="css"] {
     font-family: 'Poppins', sans-serif;
 }
 
-/* ---------------- MAIN BACKGROUND ---------------- */
+/* MAIN BACKGROUND */
 
 .stApp {
 
-    background:
+    background-image:
     linear-gradient(
-        135deg,
-        #e0f2fe 0%,
-        #dbeafe 20%,
-        #cffafe 40%,
-        #dcfce7 60%,
-        #f0fdf4 80%,
-        #ecfeff 100%
-    );
+        rgba(240,248,255,0.82),
+        rgba(240,248,255,0.85)
+    ),
+    url("https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?q=80&w=2070&auto=format&fit=crop");
 
+    background-size: cover;
+    background-position: center;
     background-attachment: fixed;
+    background-repeat: no-repeat;
 }
 
-/* ---------------- REMOVE STREAMLIT DEFAULT ---------------- */
+/* REMOVE STREAMLIT DEFAULT */
 
 #MainMenu {
     visibility: hidden;
@@ -59,14 +58,11 @@ footer {
     visibility: hidden;
 }
 
-/* ---------------- HERO SECTION ---------------- */
+/* HERO SECTION */
 
 .hero {
-
     text-align: center;
-
     padding-top: 10px;
-
     padding-bottom: 30px;
 }
 
@@ -88,7 +84,6 @@ footer {
     );
 
     -webkit-background-clip: text;
-
     -webkit-text-fill-color: transparent;
 
     margin-bottom: 10px;
@@ -103,7 +98,7 @@ footer {
     font-weight: 500;
 }
 
-/* ---------------- GLASS CONTAINER ---------------- */
+/* GLASS CONTAINER */
 
 .glass {
 
@@ -120,7 +115,7 @@ footer {
     border: 1px solid rgba(255,255,255,0.35);
 }
 
-/* ---------------- FEATURE CARDS ---------------- */
+/* FEATURE CARDS */
 
 .card {
 
@@ -169,7 +164,7 @@ footer {
     line-height: 1.7;
 }
 
-/* ---------------- IMAGE ALIGNMENT ---------------- */
+/* IMAGE SECTION */
 
 [data-testid="stImage"] {
 
@@ -201,7 +196,7 @@ footer {
     transform: scale(1.03);
 }
 
-/* ---------------- UPLOAD BOX ---------------- */
+/* UPLOAD BOX */
 
 .upload-box {
 
@@ -231,7 +226,7 @@ footer {
     font-size: 34px;
 }
 
-/* ---------------- QUESTION BOX ---------------- */
+/* QUESTION BOX */
 
 .question-box {
 
@@ -246,7 +241,7 @@ footer {
     box-shadow: 0 10px 25px rgba(0,0,0,0.08);
 }
 
-/* ---------------- INPUT ---------------- */
+/* INPUT */
 
 .stTextInput input {
 
@@ -263,7 +258,7 @@ footer {
     font-size: 17px;
 }
 
-/* ---------------- BUTTON ---------------- */
+/* BUTTON */
 
 .stButton>button {
 
@@ -297,7 +292,7 @@ footer {
     transform: scale(1.02);
 }
 
-/* ---------------- ANSWER BOX ---------------- */
+/* ANSWER BOX */
 
 .answer-box {
 
@@ -320,7 +315,7 @@ footer {
     box-shadow: 0 10px 30px rgba(0,0,0,0.08);
 }
 
-/* ---------------- SIDEBAR ---------------- */
+/* SIDEBAR */
 
 section[data-testid="stSidebar"] {
 
@@ -337,7 +332,7 @@ section[data-testid="stSidebar"] * {
     color: white !important;
 }
 
-/* ---------------- FLOATING BOT ---------------- */
+/* FLOATING BOT */
 
 .avatar {
 
@@ -369,7 +364,7 @@ section[data-testid="stSidebar"] * {
     font-size: 45px;
 
     box-shadow:
-    0 0 35px rgba(37,99,235,0.7);
+    0 0 35px rgba(37,99,235,0.6);
 
     animation: float 3s ease infinite;
 
@@ -391,7 +386,7 @@ section[data-testid="stSidebar"] * {
     }
 }
 
-/* ---------------- FOOTER ---------------- */
+/* FOOTER */
 
 .footer {
 
@@ -427,7 +422,7 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-# ---------------- MEDICAL IMAGE SECTION ----------------
+# ---------------- IMAGE SECTION ----------------
 
 st.markdown("""
 <div style="
@@ -456,21 +451,21 @@ AI-powered medical FAQ assistant using RAG, Gemini AI and trusted healthcare doc
 </div>
 """, unsafe_allow_html=True)
 
-col1, col2, col3 = st.columns(3)
+img1, img2, img3 = st.columns(3)
 
-with col1:
+with img1:
     st.image(
         "https://images.unsplash.com/photo-1584982751601-97dcc096659c?q=80&w=1200&auto=format&fit=crop",
         use_container_width=True
     )
 
-with col2:
+with img2:
     st.image(
         "https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=1200&auto=format&fit=crop",
         use_container_width=True
     )
 
-with col3:
+with img3:
     st.image(
         "https://images.unsplash.com/photo-1581595219315-a187dd40c322?q=80&w=1200&auto=format&fit=crop",
         use_container_width=True
@@ -492,26 +487,6 @@ except:
 
     st.stop()
 
-st.sidebar.markdown("""
-### 📌 Supported Healthcare PDFs
-
-- Medical FAQ Documents
-- WHO Guidelines
-- Treatment Information
-- Hospital Manuals
-- Healthcare Policies
-- Medical Encyclopedia
-""")
-
-st.sidebar.info("""
-💡 Example Questions
-
-• What are diabetes symptoms?
-• What causes hypertension?
-• What is asthma treatment?
-• What precautions are used for COVID-19?
-""")
-
 # ---------------- FEATURE CARDS ----------------
 
 col1, col2, col3 = st.columns(3)
@@ -522,7 +497,7 @@ with col1:
         <div class="icon">📄</div>
         <h3>Medical Knowledge Base</h3>
         <p>
-        Upload trusted healthcare PDFs and create an intelligent AI-powered medical assistant.
+        Upload trusted healthcare PDFs and create intelligent AI medical assistance.
         </p>
     </div>
     """, unsafe_allow_html=True)
@@ -533,7 +508,7 @@ with col2:
         <div class="icon">🧠</div>
         <h3>Semantic AI Search</h3>
         <p>
-        Powered by Gemini AI and FAISS for highly accurate medical document retrieval.
+        Powered by Gemini AI and FAISS for accurate medical retrieval.
         </p>
     </div>
     """, unsafe_allow_html=True)
@@ -544,25 +519,20 @@ with col3:
         <div class="icon">⚕️</div>
         <h3>Safe Healthcare Answers</h3>
         <p>
-        Provides professional responses strictly from uploaded medical documents.
+        Professional answers strictly from uploaded documents.
         </p>
     </div>
     """, unsafe_allow_html=True)
 
-st.write("")
-
-# ---------------- MAIN CONTAINER ----------------
-
 st.markdown('<div class="glass">', unsafe_allow_html=True)
 
-# ---------------- UPLOAD SECTION ----------------
+# ---------------- UPLOAD BOX ----------------
 
 st.markdown("""
 <div class="upload-box">
     <h2>📤 Upload Medical PDF</h2>
     <p>
-    Upload healthcare FAQs, WHO guidelines, treatment documents,
-    medical encyclopedia or healthcare manuals.
+    Upload healthcare FAQs, WHO guidelines or treatment documents.
     </p>
 </div>
 """, unsafe_allow_html=True)
@@ -594,8 +564,6 @@ if uploaded_file:
                 if text:
                     full_text += text + "\n"
 
-        # ---------------- CHUNKING ----------------
-
         def chunk_text(text, chunk_size=700, overlap=120):
 
             chunks = []
@@ -614,8 +582,6 @@ if uploaded_file:
 
         texts = chunk_text(full_text)
 
-        # ---------------- EMBEDDINGS ----------------
-
         with st.spinner("🧠 Building AI medical knowledge base..."):
 
             model = SentenceTransformer("all-MiniLM-L6-v2")
@@ -630,8 +596,6 @@ if uploaded_file:
             f"✅ Medical knowledge base ready with {len(texts)} intelligent chunks."
         )
 
-        # ---------------- QUESTION ----------------
-
         st.markdown("""
         <div class="question-box">
             <h2 class="section-title">💬 Ask Your Medical Question</h2>
@@ -642,8 +606,6 @@ if uploaded_file:
             "",
             placeholder="Example: What are the symptoms of pneumonia?"
         )
-
-        # ---------------- ANSWER BUTTON ----------------
 
         if st.button("🚀 Generate AI Medical Answer"):
 
@@ -681,41 +643,35 @@ QUESTION:
 ANSWER:
 """
 
-                try:
+                llm = genai.GenerativeModel(
+                    "gemini-2.5-flash-lite"
+                )
 
-                    llm = genai.GenerativeModel(
-                        "gemini-2.5-flash-lite"
-                    )
+                with st.spinner("🤖 AI is analyzing medical information..."):
 
-                    with st.spinner("🤖 AI is analyzing medical information..."):
+                    response = llm.generate_content(prompt)
 
-                        response = llm.generate_content(prompt)
+                st.markdown("## 🩺 AI Medical Answer")
 
-                    st.markdown("## 🩺 AI Medical Answer")
+                st.markdown(
+                    f"""
+                    <div class="answer-box">
+                    {response.text}
+                    </div>
+                    """,
+                    unsafe_allow_html=True
+                )
 
-                    st.markdown(
-                        f"""
-                        <div class="answer-box">
-                        {response.text}
-                        </div>
-                        """,
-                        unsafe_allow_html=True
-                    )
+                with st.expander("📚 View Source Context"):
 
-                    with st.expander("📚 View Source Context"):
+                    st.write(context[:2000])
 
-                        st.write(context[:2000])
-
-                    st.warning("""
+                st.warning("""
 ⚠️ Medical Disclaimer:
 This chatbot provides information only from uploaded documents.
 It does not replace professional medical consultation.
 Always consult certified healthcare professionals.
 """)
-
-                except Exception as e:
-
-                    st.error(f"Gemini Error: {e}")
 
     finally:
 
