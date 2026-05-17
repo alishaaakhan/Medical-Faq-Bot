@@ -652,11 +652,138 @@ st.markdown("</div>", unsafe_allow_html=True)
 # ---------------- FLOATING AI BOT ----------------
 
 st.markdown("""
+<style>
+
+.floating-bot {
+
+    position: fixed;
+
+    bottom: 30px;
+
+    right: 30px;
+
+    z-index: 9999;
+
+    animation: botFloat 3s ease-in-out infinite;
+}
+
+.bot-circle {
+
+    width: 95px;
+
+    height: 95px;
+
+    border-radius: 50%;
+
+    background: linear-gradient(
+        135deg,
+        #2563eb,
+        #06b6d4,
+        #14b8a6
+    );
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 46px;
+
+    color: white;
+
+    box-shadow:
+    0 0 20px rgba(37,99,235,0.45),
+    0 0 45px rgba(6,182,212,0.35);
+
+    cursor: pointer;
+
+    position: relative;
+}
+
+.bot-circle::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 115px;
+
+    height: 115px;
+
+    border-radius: 50%;
+
+    border: 3px solid rgba(37,99,235,0.35);
+
+    animation: pulse 2s infinite;
+}
+
+.bot-message {
+
+    position: absolute;
+
+    bottom: 115px;
+
+    right: 0;
+
+    width: 240px;
+
+    background: rgba(255,255,255,0.96);
+
+    padding: 16px;
+
+    border-radius: 20px;
+
+    color: #0f172a;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+
+    backdrop-filter: blur(12px);
+}
+
+@keyframes botFloat {
+
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+@keyframes pulse {
+
+    0% {
+        transform: scale(0.9);
+        opacity: 1;
+    }
+
+    70% {
+        transform: scale(1.15);
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+</style>
+
 <div class="floating-bot">
 
     <div class="bot-message">
         👋 Hi! I'm MediVerse AI <br>
-        Ask me medical questions from your uploaded healthcare PDFs.
+        Ask medical questions from uploaded healthcare PDFs.
     </div>
 
     <div class="bot-circle">
