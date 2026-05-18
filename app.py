@@ -24,7 +24,7 @@ except Exception:
     st.error("❌ Gemini API Key Missing")
     st.stop()
 
-# ================= PREMIUM DARK MEDICAL UI =================
+# ================= PREMIUM ULTRA UI =================
 
 st.markdown("""
 <style>
@@ -35,16 +35,17 @@ html, body, [class*="css"] {
     font-family: 'Poppins', sans-serif;
 }
 
-/* ================= BACKGROUND ================= */
+/* ================= MAIN BACKGROUND ================= */
 
 .stApp {
 
-    background-image:
+    background:
     linear-gradient(
-        rgba(2,6,23,0.88),
-        rgba(15,23,42,0.92)
+        rgba(2,6,23,0.90),
+        rgba(15,23,42,0.93)
     ),
-    url("https://images.unsplash.com/photo-1587351021759-3e566b6af7cc?q=80&w=2070&auto=format&fit=crop");
+
+    url("https://images.unsplash.com/photo-1666214280557-f1b5022eb634?q=80&w=2070&auto=format&fit=crop");
 
     background-size: cover;
 
@@ -55,7 +56,7 @@ html, body, [class*="css"] {
     background-repeat: no-repeat;
 }
 
-/* ================= HIDE STREAMLIT ================= */
+/* ================= REMOVE STREAMLIT ================= */
 
 #MainMenu,
 header,
@@ -63,23 +64,29 @@ footer {
     visibility: hidden;
 }
 
-/* ================= HERO ================= */
+/* ================= HERO SECTION ================= */
 
 .hero {
+
     text-align: center;
-    padding-top: 10px;
-    padding-bottom: 35px;
+
+    padding-top: 20px;
+
+    padding-bottom: 40px;
 }
 
 .hero h1 {
 
-    font-size: 88px;
+    font-size: 95px;
 
     font-weight: 800;
+
+    line-height: 1;
 
     background: linear-gradient(
         90deg,
         #60a5fa,
+        #38bdf8,
         #22d3ee,
         #2dd4bf,
         #4ade80
@@ -90,20 +97,20 @@ footer {
     -webkit-text-fill-color: transparent;
 
     text-shadow:
-    0 0 35px rgba(34,211,238,0.35);
+    0 0 45px rgba(34,211,238,0.4);
 
-    margin-bottom: 10px;
+    margin-bottom: 12px;
 }
 
 .hero p {
 
+    font-size: 24px;
+
     color: #dbeafe;
 
-    font-size: 23px;
-
-    letter-spacing: 0.5px;
-
     font-weight: 500;
+
+    letter-spacing: 1px;
 }
 
 /* ================= GLASS EFFECT ================= */
@@ -112,16 +119,16 @@ footer {
 
     background: rgba(15,23,42,0.58);
 
-    backdrop-filter: blur(26px);
+    backdrop-filter: blur(28px);
 
-    border-radius: 34px;
+    border-radius: 36px;
 
-    padding: 40px;
+    padding: 42px;
 
     border: 1px solid rgba(255,255,255,0.08);
 
     box-shadow:
-    0 10px 45px rgba(0,0,0,0.45),
+    0 12px 45px rgba(0,0,0,0.45),
     0 0 25px rgba(34,211,238,0.08);
 }
 
@@ -129,90 +136,99 @@ footer {
 
 .card {
 
-    background: rgba(15,23,42,0.88);
+    background: rgba(15,23,42,0.90);
 
-    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 30px;
 
-    border-radius: 28px;
-
-    padding: 30px;
+    padding: 32px;
 
     text-align: center;
 
-    box-shadow:
-    0 10px 35px rgba(0,0,0,0.35);
+    height: 280px;
+
+    border: 1px solid rgba(255,255,255,0.06);
 
     transition: 0.4s;
 
-    height: 270px;
+    box-shadow:
+    0 10px 30px rgba(0,0,0,0.35);
 }
 
 .card:hover {
 
-    transform: translateY(-12px);
+    transform: translateY(-12px) scale(1.02);
 
     border: 1px solid rgba(34,211,238,0.35);
 
     box-shadow:
-    0 15px 40px rgba(34,211,238,0.22);
+    0 18px 45px rgba(34,211,238,0.22);
 }
 
 .icon {
 
-    font-size: 60px;
+    font-size: 65px;
 
-    margin-bottom: 15px;
+    margin-bottom: 18px;
+
+    filter: drop-shadow(0 0 10px rgba(34,211,238,0.4));
 }
 
 .card h3 {
 
     color: #f8fafc;
 
-    font-size: 27px;
+    font-size: 28px;
 
-    margin-bottom: 10px;
+    margin-bottom: 12px;
 }
 
 .card p {
 
     color: #cbd5e1;
 
-    line-height: 1.8;
-
     font-size: 15px;
+
+    line-height: 1.9;
 }
 
-/* ================= UPLOAD SECTION ================= */
+/* ================= UPLOAD BOX ================= */
 
 .upload-box {
 
     background: linear-gradient(
         135deg,
-        rgba(37,99,235,0.95),
-        rgba(14,165,233,0.95),
-        rgba(6,182,212,0.95),
-        rgba(20,184,166,0.95)
+        rgba(37,99,235,0.96),
+        rgba(14,165,233,0.96),
+        rgba(6,182,212,0.96),
+        rgba(20,184,166,0.96)
     );
 
-    border-radius: 28px;
+    border-radius: 30px;
 
-    padding: 35px;
+    padding: 38px;
 
     text-align: center;
 
     color: white;
 
-    margin-bottom: 28px;
+    margin-bottom: 30px;
 
     box-shadow:
-    0 12px 35px rgba(34,211,238,0.25);
+    0 15px 40px rgba(34,211,238,0.28);
 }
 
 .upload-box h2 {
 
-    font-size: 36px;
+    font-size: 38px;
 
-    margin-bottom: 10px;
+    margin-bottom: 12px;
+}
+
+.upload-box p {
+
+    font-size: 16px;
+
+    line-height: 1.8;
 }
 
 /* ================= QUESTION BOX ================= */
@@ -221,16 +237,27 @@ footer {
 
     background: rgba(15,23,42,0.88);
 
-    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 28px;
 
-    border-radius: 24px;
-
-    padding: 28px;
+    padding: 30px;
 
     margin-top: 20px;
 
+    border: 1px solid rgba(255,255,255,0.06);
+
     box-shadow:
-    0 10px 25px rgba(0,0,0,0.28);
+    0 10px 30px rgba(0,0,0,0.30);
+}
+
+/* ================= SECTION TITLE ================= */
+
+.section-title {
+
+    color: #f8fafc;
+
+    font-size: 32px;
+
+    font-weight: 700;
 }
 
 /* ================= INPUT ================= */
@@ -239,15 +266,17 @@ footer {
 
     background-color: rgba(15,23,42,0.95) !important;
 
-    color: #ffffff !important;
+    color: white !important;
+
+    border-radius: 20px !important;
+
+    padding: 20px !important;
 
     border: 2px solid rgba(34,211,238,0.18) !important;
 
-    border-radius: 18px !important;
-
-    padding: 18px !important;
-
     font-size: 17px !important;
+
+    transition: 0.3s;
 }
 
 .stTextInput input:focus {
@@ -255,20 +284,23 @@ footer {
     border: 2px solid #22d3ee !important;
 
     box-shadow:
-    0 0 20px rgba(34,211,238,0.25) !important;
+    0 0 22px rgba(34,211,238,0.28) !important;
 }
 
 /* ================= FILE UPLOADER ================= */
 
 [data-testid="stFileUploader"] {
 
-    background: rgba(15,23,42,0.78);
+    background: rgba(15,23,42,0.82);
 
-    border-radius: 22px;
+    border-radius: 24px;
 
-    padding: 18px;
+    padding: 22px;
 
-    border: 1px dashed rgba(34,211,238,0.35);
+    border: 2px dashed rgba(34,211,238,0.30);
+
+    box-shadow:
+    0 10px 25px rgba(0,0,0,0.2);
 }
 
 /* ================= BUTTON ================= */
@@ -277,9 +309,9 @@ footer {
 
     width: 100%;
 
-    padding: 16px;
+    padding: 18px;
 
-    border-radius: 18px;
+    border-radius: 20px;
 
     background: linear-gradient(
         90deg,
@@ -293,14 +325,14 @@ footer {
 
     border: none;
 
-    font-size: 18px;
+    font-size: 19px;
 
     font-weight: 700;
 
     transition: 0.35s;
 
     box-shadow:
-    0 10px 30px rgba(34,211,238,0.22);
+    0 12px 35px rgba(34,211,238,0.25);
 }
 
 .stButton>button:hover {
@@ -308,7 +340,7 @@ footer {
     transform: scale(1.03);
 
     box-shadow:
-    0 15px 40px rgba(34,211,238,0.35);
+    0 18px 45px rgba(34,211,238,0.35);
 }
 
 /* ================= ANSWER BOX ================= */
@@ -317,27 +349,30 @@ footer {
 
     background: rgba(15,23,42,0.96);
 
-    color: #f8fafc;
-
     border-left: 8px solid #22d3ee;
 
-    border-radius: 24px;
+    border-radius: 28px;
 
-    padding: 30px;
+    padding: 32px;
+
+    color: #f8fafc;
+
+    font-size: 17px;
 
     line-height: 2;
 
-    margin-top: 20px;
+    margin-top: 22px;
 
     box-shadow:
-    0 10px 35px rgba(0,0,0,0.35);
+    0 12px 35px rgba(0,0,0,0.35);
 }
 
 /* ================= SIDEBAR ================= */
 
 section[data-testid="stSidebar"] {
 
-    background: linear-gradient(
+    background:
+    linear-gradient(
         180deg,
         #020617,
         #0f172a,
@@ -349,30 +384,13 @@ section[data-testid="stSidebar"] * {
     color: white !important;
 }
 
-/* ================= SECTION TITLE ================= */
+/* ================= SUCCESS/WARNING ================= */
 
-.section-title {
+.stSuccess,
+.stWarning,
+.stInfo {
 
-    color: #f8fafc;
-
-    font-size: 30px;
-
-    font-weight: 700;
-}
-
-/* ================= FOOTER ================= */
-
-.footer {
-
-    text-align: center;
-
-    margin-top: 40px;
-
-    color: #dbeafe;
-
-    font-weight: 600;
-
-    font-size: 16px;
+    border-radius: 18px;
 }
 
 /* ================= FLOATING BOT ================= */
@@ -385,9 +403,9 @@ section[data-testid="stSidebar"] * {
 
     right: 25px;
 
-    width: 95px;
+    width: 100px;
 
-    height: 95px;
+    height: 100px;
 
     border-radius: 50%;
 
@@ -401,16 +419,16 @@ section[data-testid="stSidebar"] * {
 
     display: flex;
 
-    justify-content: center;
-
     align-items: center;
 
-    font-size: 45px;
+    justify-content: center;
+
+    font-size: 50px;
 
     box-shadow:
-    0 0 35px rgba(34,211,238,0.45);
+    0 0 40px rgba(34,211,238,0.45);
 
-    animation: float 3s ease infinite;
+    animation: float 3s ease-in-out infinite;
 
     z-index: 999;
 }
@@ -422,12 +440,27 @@ section[data-testid="stSidebar"] * {
     }
 
     50% {
-        transform: translateY(-12px);
+        transform: translateY(-14px);
     }
 
     100% {
         transform: translateY(0px);
     }
+}
+
+/* ================= FOOTER ================= */
+
+.footer {
+
+    text-align: center;
+
+    margin-top: 40px;
+
+    color: #dbeafe;
+
+    font-size: 16px;
+
+    font-weight: 600;
 }
 
 /* ================= SCROLLBAR ================= */
@@ -531,7 +564,7 @@ st.write("")
 
 st.markdown('<div class="glass">', unsafe_allow_html=True)
 
-# ================= UPLOAD SECTION =================
+# ================= UPLOAD BOX =================
 
 st.markdown("""
 <div class="upload-box">
@@ -571,7 +604,7 @@ if uploaded_file is not None:
                 text = page.extract_text()
 
                 if text:
-                    full_text += text + "\n"
+                    full_text += text + "\\n"
 
         # ================= CHUNKING =================
 
@@ -646,7 +679,7 @@ if uploaded_file is not None:
                     k=4
                 )
 
-                context = "\n\n".join(
+                context = "\\n\\n".join(
                     [texts[i] for i in indices[0]]
                 )
 
@@ -731,6 +764,6 @@ st.markdown("""
 
 st.markdown("""
 <div class="footer">
-Made by Alisha Khan ❤️
+Made with ❤️ by Alisha Khan
 </div>
 """, unsafe_allow_html=True)
