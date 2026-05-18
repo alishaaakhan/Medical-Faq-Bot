@@ -24,7 +24,7 @@ except Exception:
     st.error("❌ Gemini API Key Missing")
     st.stop()
 
-# ================= PREMIUM DARK UI =================
+# ================= PREMIUM DARK MEDICAL UI =================
 
 st.markdown("""
 <style>
@@ -41,14 +41,17 @@ html, body, [class*="css"] {
 
     background-image:
     linear-gradient(
-        rgba(2,6,23,0.92),
-        rgba(15,23,42,0.95)
+        rgba(2,6,23,0.88),
+        rgba(15,23,42,0.92)
     ),
-    url("https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=2070&auto=format&fit=crop");
+    url("https://images.unsplash.com/photo-1587351021759-3e566b6af7cc?q=80&w=2070&auto=format&fit=crop");
 
     background-size: cover;
+
     background-position: center;
+
     background-attachment: fixed;
+
     background-repeat: no-repeat;
 }
 
@@ -70,97 +73,102 @@ footer {
 
 .hero h1 {
 
-    font-size: 82px;
+    font-size: 88px;
 
     font-weight: 800;
 
-    line-height: 1;
-
     background: linear-gradient(
         90deg,
-        #38bdf8,
-        #06b6d4,
-        #14b8a6,
-        #22c55e
+        #60a5fa,
+        #22d3ee,
+        #2dd4bf,
+        #4ade80
     );
 
     -webkit-background-clip: text;
+
     -webkit-text-fill-color: transparent;
+
+    text-shadow:
+    0 0 35px rgba(34,211,238,0.35);
 
     margin-bottom: 10px;
 }
 
 .hero p {
 
-    font-size: 22px;
+    color: #dbeafe;
 
-    color: #e2e8f0;
+    font-size: 23px;
+
+    letter-spacing: 0.5px;
 
     font-weight: 500;
 }
 
-/* ================= GLASS ================= */
+/* ================= GLASS EFFECT ================= */
 
 .glass {
 
-    background: rgba(15,23,42,0.65);
+    background: rgba(15,23,42,0.58);
 
-    backdrop-filter: blur(22px);
+    backdrop-filter: blur(26px);
 
-    border-radius: 30px;
+    border-radius: 34px;
 
-    padding: 35px;
-
-    box-shadow:
-    0 10px 40px rgba(0,0,0,0.35);
+    padding: 40px;
 
     border: 1px solid rgba(255,255,255,0.08);
+
+    box-shadow:
+    0 10px 45px rgba(0,0,0,0.45),
+    0 0 25px rgba(34,211,238,0.08);
 }
 
-/* ================= CARDS ================= */
+/* ================= FEATURE CARDS ================= */
 
 .card {
 
-    background: rgba(15,23,42,0.9);
+    background: rgba(15,23,42,0.88);
 
-    border-radius: 26px;
+    border: 1px solid rgba(255,255,255,0.06);
+
+    border-radius: 28px;
 
     padding: 30px;
 
     text-align: center;
 
     box-shadow:
-    0 12px 25px rgba(0,0,0,0.25);
+    0 10px 35px rgba(0,0,0,0.35);
 
     transition: 0.4s;
 
-    height: 260px;
-
-    border: 1px solid rgba(255,255,255,0.06);
+    height: 270px;
 }
 
 .card:hover {
 
-    transform: translateY(-10px);
+    transform: translateY(-12px);
 
-    border: 1px solid rgba(56,189,248,0.35);
+    border: 1px solid rgba(34,211,238,0.35);
 
     box-shadow:
-    0 15px 35px rgba(6,182,212,0.2);
+    0 15px 40px rgba(34,211,238,0.22);
 }
 
 .icon {
 
-    font-size: 58px;
+    font-size: 60px;
 
-    margin-bottom: 12px;
+    margin-bottom: 15px;
 }
 
 .card h3 {
 
-    font-size: 26px;
-
     color: #f8fafc;
+
+    font-size: 27px;
 
     margin-bottom: 10px;
 }
@@ -169,9 +177,9 @@ footer {
 
     color: #cbd5e1;
 
-    font-size: 15px;
+    line-height: 1.8;
 
-    line-height: 1.7;
+    font-size: 15px;
 }
 
 /* ================= UPLOAD SECTION ================= */
@@ -180,45 +188,49 @@ footer {
 
     background: linear-gradient(
         135deg,
-        #2563eb,
-        #0891b2,
-        #06b6d4,
-        #14b8a6
+        rgba(37,99,235,0.95),
+        rgba(14,165,233,0.95),
+        rgba(6,182,212,0.95),
+        rgba(20,184,166,0.95)
     );
 
-    border-radius: 24px;
+    border-radius: 28px;
 
-    padding: 30px;
+    padding: 35px;
 
     text-align: center;
 
     color: white;
 
-    margin-bottom: 25px;
+    margin-bottom: 28px;
 
     box-shadow:
-    0 10px 25px rgba(37,99,235,0.28);
+    0 12px 35px rgba(34,211,238,0.25);
 }
 
 .upload-box h2 {
 
-    font-size: 34px;
+    font-size: 36px;
+
+    margin-bottom: 10px;
 }
 
 /* ================= QUESTION BOX ================= */
 
 .question-box {
 
-    background: rgba(15,23,42,0.92);
+    background: rgba(15,23,42,0.88);
 
-    padding: 25px;
+    border: 1px solid rgba(255,255,255,0.06);
 
-    border-radius: 22px;
+    border-radius: 24px;
+
+    padding: 28px;
 
     margin-top: 20px;
 
     box-shadow:
-    0 10px 25px rgba(0,0,0,0.2);
+    0 10px 25px rgba(0,0,0,0.28);
 }
 
 /* ================= INPUT ================= */
@@ -229,13 +241,34 @@ footer {
 
     color: #ffffff !important;
 
-    border-radius: 16px !important;
+    border: 2px solid rgba(34,211,238,0.18) !important;
+
+    border-radius: 18px !important;
 
     padding: 18px !important;
 
-    border: 2px solid rgba(56,189,248,0.18) !important;
-
     font-size: 17px !important;
+}
+
+.stTextInput input:focus {
+
+    border: 2px solid #22d3ee !important;
+
+    box-shadow:
+    0 0 20px rgba(34,211,238,0.25) !important;
+}
+
+/* ================= FILE UPLOADER ================= */
+
+[data-testid="stFileUploader"] {
+
+    background: rgba(15,23,42,0.78);
+
+    border-radius: 22px;
+
+    padding: 18px;
+
+    border: 1px dashed rgba(34,211,238,0.35);
 }
 
 /* ================= BUTTON ================= */
@@ -246,12 +279,12 @@ footer {
 
     padding: 16px;
 
-    border-radius: 16px;
+    border-radius: 18px;
 
     background: linear-gradient(
         90deg,
         #2563eb,
-        #0891b2,
+        #0ea5e9,
         #06b6d4,
         #14b8a6
     );
@@ -262,14 +295,20 @@ footer {
 
     font-size: 18px;
 
-    font-weight: 600;
+    font-weight: 700;
 
     transition: 0.35s;
+
+    box-shadow:
+    0 10px 30px rgba(34,211,238,0.22);
 }
 
 .stButton>button:hover {
 
-    transform: scale(1.02);
+    transform: scale(1.03);
+
+    box-shadow:
+    0 15px 40px rgba(34,211,238,0.35);
 }
 
 /* ================= ANSWER BOX ================= */
@@ -278,22 +317,20 @@ footer {
 
     background: rgba(15,23,42,0.96);
 
-    border-left: 8px solid #22c55e;
+    color: #f8fafc;
 
-    border-radius: 22px;
+    border-left: 8px solid #22d3ee;
+
+    border-radius: 24px;
 
     padding: 30px;
 
-    color: #f8fafc;
-
-    font-size: 17px;
-
     line-height: 2;
 
-    margin-top: 18px;
+    margin-top: 20px;
 
     box-shadow:
-    0 10px 30px rgba(0,0,0,0.25);
+    0 10px 35px rgba(0,0,0,0.35);
 }
 
 /* ================= SIDEBAR ================= */
@@ -312,22 +349,7 @@ section[data-testid="stSidebar"] * {
     color: white !important;
 }
 
-/* ================= FOOTER ================= */
-
-.footer {
-
-    text-align: center;
-
-    margin-top: 40px;
-
-    color: #e2e8f0;
-
-    font-weight: 600;
-
-    font-size: 16px;
-}
-
-/* ================= TITLE ================= */
+/* ================= SECTION TITLE ================= */
 
 .section-title {
 
@@ -336,6 +358,21 @@ section[data-testid="stSidebar"] * {
     font-size: 30px;
 
     font-weight: 700;
+}
+
+/* ================= FOOTER ================= */
+
+.footer {
+
+    text-align: center;
+
+    margin-top: 40px;
+
+    color: #dbeafe;
+
+    font-weight: 600;
+
+    font-size: 16px;
 }
 
 /* ================= FLOATING BOT ================= */
@@ -357,9 +394,9 @@ section[data-testid="stSidebar"] * {
     background: linear-gradient(
         135deg,
         #2563eb,
+        #0ea5e9,
         #06b6d4,
-        #14b8a6,
-        #22c55e
+        #14b8a6
     );
 
     display: flex;
@@ -371,7 +408,7 @@ section[data-testid="stSidebar"] * {
     font-size: 45px;
 
     box-shadow:
-    0 0 35px rgba(6,182,212,0.5);
+    0 0 35px rgba(34,211,238,0.45);
 
     animation: float 3s ease infinite;
 
@@ -494,7 +531,7 @@ st.write("")
 
 st.markdown('<div class="glass">', unsafe_allow_html=True)
 
-# ================= UPLOAD BOX =================
+# ================= UPLOAD SECTION =================
 
 st.markdown("""
 <div class="upload-box">
@@ -613,8 +650,6 @@ if uploaded_file is not None:
                     [texts[i] for i in indices[0]]
                 )
 
-                # ================= PROMPT =================
-
                 prompt = f"""
 You are an advanced AI Medical FAQ Assistant.
 
@@ -662,13 +697,9 @@ ANSWER:
                         unsafe_allow_html=True
                     )
 
-                    # ================= SOURCE =================
-
                     with st.expander("📚 View Source Context"):
 
                         st.write(context[:2000])
-
-                    # ================= DISCLAIMER =================
 
                     st.warning("""
 ⚠️ Medical Disclaimer:
