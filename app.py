@@ -7,7 +7,7 @@ import tempfile
 import os
 from pypdf import PdfReader
 
-# ---------------- PAGE CONFIG ----------------
+# ================= PAGE CONFIG =================
 
 st.set_page_config(
     page_title="MediCare AI",
@@ -16,7 +16,15 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# ---------------- ULTRA PREMIUM UI ----------------
+# ================= GEMINI API =================
+
+try:
+    genai.configure(api_key=st.secrets["GEMINI_API_KEY"])
+except Exception:
+    st.error("❌ Gemini API Key Missing")
+    st.stop()
+
+# ================= PREMIUM DARK UI =================
 
 st.markdown("""
 <style>
@@ -27,15 +35,16 @@ html, body, [class*="css"] {
     font-family: 'Poppins', sans-serif;
 }
 
-/* MAIN BACKGROUND */
+/* ================= BACKGROUND ================= */
 
 .stApp {
+
     background-image:
     linear-gradient(
-        rgba(240,248,255,0.82),
-        rgba(240,248,255,0.85)
+        rgba(2,6,23,0.92),
+        rgba(15,23,42,0.95)
     ),
-    url("https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?q=80&w=2070&auto=format&fit=crop");
+    url("https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=2070&auto=format&fit=crop");
 
     background-size: cover;
     background-position: center;
@@ -43,36 +52,33 @@ html, body, [class*="css"] {
     background-repeat: no-repeat;
 }
 
-/* REMOVE STREAMLIT DEFAULT */
+/* ================= HIDE STREAMLIT ================= */
 
-#MainMenu {
-    visibility: hidden;
-}
-
-header {
-    visibility: hidden;
-}
-
+#MainMenu,
+header,
 footer {
     visibility: hidden;
 }
 
-/* HERO SECTION */
+/* ================= HERO ================= */
 
 .hero {
     text-align: center;
     padding-top: 10px;
-    padding-bottom: 30px;
+    padding-bottom: 35px;
 }
 
 .hero h1 {
+
     font-size: 82px;
+
     font-weight: 800;
+
     line-height: 1;
+
     background: linear-gradient(
         90deg,
-        #2563eb,
-        #0891b2,
+        #38bdf8,
         #06b6d4,
         #14b8a6,
         #22c55e
@@ -85,58 +91,93 @@ footer {
 }
 
 .hero p {
+
     font-size: 22px;
-    color: #0f172a;
+
+    color: #e2e8f0;
+
     font-weight: 500;
 }
 
-/* GLASS MAIN CONTAINER */
+/* ================= GLASS ================= */
 
 .glass {
-    background: rgba(255,255,255,0.68);
-    backdrop-filter: blur(20px);
+
+    background: rgba(15,23,42,0.65);
+
+    backdrop-filter: blur(22px);
+
     border-radius: 30px;
+
     padding: 35px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
-    border: 1px solid rgba(255,255,255,0.35);
+
+    box-shadow:
+    0 10px 40px rgba(0,0,0,0.35);
+
+    border: 1px solid rgba(255,255,255,0.08);
 }
 
-/* FEATURE CARDS */
+/* ================= CARDS ================= */
 
 .card {
-    background: rgba(255,255,255,0.92);
-    border-radius: 24px;
+
+    background: rgba(15,23,42,0.9);
+
+    border-radius: 26px;
+
     padding: 30px;
+
     text-align: center;
-    box-shadow: 0 12px 25px rgba(0,0,0,0.08);
+
+    box-shadow:
+    0 12px 25px rgba(0,0,0,0.25);
+
     transition: 0.4s;
+
     height: 260px;
+
+    border: 1px solid rgba(255,255,255,0.06);
 }
 
 .card:hover {
-    transform: translateY(-10px) scale(1.02);
+
+    transform: translateY(-10px);
+
+    border: 1px solid rgba(56,189,248,0.35);
+
+    box-shadow:
+    0 15px 35px rgba(6,182,212,0.2);
 }
 
 .icon {
+
     font-size: 58px;
+
     margin-bottom: 12px;
 }
 
 .card h3 {
+
     font-size: 26px;
-    color: #0f172a;
+
+    color: #f8fafc;
+
     margin-bottom: 10px;
 }
 
 .card p {
-    color: #475569;
+
+    color: #cbd5e1;
+
     font-size: 15px;
+
     line-height: 1.7;
 }
 
-/* UPLOAD SECTION */
+/* ================= UPLOAD SECTION ================= */
 
 .upload-box {
+
     background: linear-gradient(
         135deg,
         #2563eb,
@@ -146,43 +187,65 @@ footer {
     );
 
     border-radius: 24px;
+
     padding: 30px;
+
     text-align: center;
+
     color: white;
+
     margin-bottom: 25px;
-    box-shadow: 0 10px 25px rgba(37,99,235,0.28);
+
+    box-shadow:
+    0 10px 25px rgba(37,99,235,0.28);
 }
 
 .upload-box h2 {
+
     font-size: 34px;
 }
 
-/* QUESTION BOX */
+/* ================= QUESTION BOX ================= */
 
 .question-box {
-    background: rgba(255,255,255,0.92);
+
+    background: rgba(15,23,42,0.92);
+
     padding: 25px;
+
     border-radius: 22px;
+
     margin-top: 20px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+
+    box-shadow:
+    0 10px 25px rgba(0,0,0,0.2);
 }
 
-/* INPUT */
+/* ================= INPUT ================= */
 
 .stTextInput input {
-    background-color: white;
-    color: #111827;
-    border-radius: 16px;
-    padding: 18px;
-    border: 2px solid #dbeafe;
-    font-size: 17px;
+
+    background-color: rgba(15,23,42,0.95) !important;
+
+    color: #ffffff !important;
+
+    border-radius: 16px !important;
+
+    padding: 18px !important;
+
+    border: 2px solid rgba(56,189,248,0.18) !important;
+
+    font-size: 17px !important;
 }
 
-/* BUTTON */
+/* ================= BUTTON ================= */
 
 .stButton>button {
+
     width: 100%;
+
     padding: 16px;
+
     border-radius: 16px;
 
     background: linear-gradient(
@@ -194,34 +257,49 @@ footer {
     );
 
     color: white;
+
     border: none;
+
     font-size: 18px;
+
     font-weight: 600;
 
     transition: 0.35s;
 }
 
 .stButton>button:hover {
+
     transform: scale(1.02);
 }
 
-/* ANSWER BOX */
+/* ================= ANSWER BOX ================= */
 
 .answer-box {
-    background: rgba(255,255,255,0.95);
+
+    background: rgba(15,23,42,0.96);
+
     border-left: 8px solid #22c55e;
+
     border-radius: 22px;
+
     padding: 30px;
-    color: #111827;
+
+    color: #f8fafc;
+
     font-size: 17px;
+
     line-height: 2;
+
     margin-top: 18px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+
+    box-shadow:
+    0 10px 30px rgba(0,0,0,0.25);
 }
 
-/* SIDEBAR */
+/* ================= SIDEBAR ================= */
 
 section[data-testid="stSidebar"] {
+
     background: linear-gradient(
         180deg,
         #020617,
@@ -234,48 +312,124 @@ section[data-testid="stSidebar"] * {
     color: white !important;
 }
 
-/* FOOTER */
+/* ================= FOOTER ================= */
 
 .footer {
+
     text-align: center;
+
     margin-top: 40px;
-    color: #0f172a;
+
+    color: #e2e8f0;
+
     font-weight: 600;
+
     font-size: 16px;
 }
 
-/* TITLE */
+/* ================= TITLE ================= */
 
 .section-title {
-    color: #0f172a;
+
+    color: #f8fafc;
+
     font-size: 30px;
+
     font-weight: 700;
+}
+
+/* ================= FLOATING BOT ================= */
+
+.avatar {
+
+    position: fixed;
+
+    bottom: 25px;
+
+    right: 25px;
+
+    width: 95px;
+
+    height: 95px;
+
+    border-radius: 50%;
+
+    background: linear-gradient(
+        135deg,
+        #2563eb,
+        #06b6d4,
+        #14b8a6,
+        #22c55e
+    );
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    font-size: 45px;
+
+    box-shadow:
+    0 0 35px rgba(6,182,212,0.5);
+
+    animation: float 3s ease infinite;
+
+    z-index: 999;
+}
+
+@keyframes float {
+
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+/* ================= SCROLLBAR ================= */
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #0f172a;
+}
+
+::-webkit-scrollbar-thumb {
+
+    background: linear-gradient(
+        #2563eb,
+        #06b6d4
+    );
+
+    border-radius: 20px;
 }
 
 </style>
 """, unsafe_allow_html=True)
 
-# ---------------- HERO ----------------
+# ================= HERO =================
 
 st.markdown("""
 <div class="hero">
     <h1>🩺 MediCare AI</h1>
-    <p>Next Generation Medical FAQ Assistant </p>
+    <p>Next Generation Medical FAQ Assistant</p>
 </div>
 """, unsafe_allow_html=True)
 
-# ---------------- SIDEBAR ----------------
+# ================= SIDEBAR =================
 
 st.sidebar.title("⚙️ MediVerse Control Center")
 
-try:
-    genai.configure(api_key=st.secrets["GEMINI_API_KEY"])
-
-    st.sidebar.success("✅ Gemini API Connected")
-
-except:
-    st.sidebar.error("❌ API Key Missing")
-    st.stop()
+st.sidebar.success("✅ Gemini API Connected")
 
 st.sidebar.markdown("""
 ### 📌 Supported Healthcare PDFs
@@ -297,7 +451,7 @@ st.sidebar.info("""
 • What precautions are used for COVID-19?
 """)
 
-# ---------------- FEATURE CARDS ----------------
+# ================= FEATURE CARDS =================
 
 col1, col2, col3 = st.columns(3)
 
@@ -336,11 +490,11 @@ with col3:
 
 st.write("")
 
-# ---------------- MAIN CONTAINER ----------------
+# ================= MAIN CONTAINER =================
 
 st.markdown('<div class="glass">', unsafe_allow_html=True)
 
-# ---------------- UPLOAD BOX ----------------
+# ================= UPLOAD BOX =================
 
 st.markdown("""
 <div class="upload-box">
@@ -354,12 +508,12 @@ st.markdown("""
 
 uploaded_file = st.file_uploader(
     "",
-    type="pdf"
+    type=["pdf"]
 )
 
-# ---------------- PDF PROCESS ----------------
+# ================= PDF PROCESS =================
 
-if uploaded_file:
+if uploaded_file is not None:
 
     with tempfile.NamedTemporaryFile(delete=False, suffix=".pdf") as tmp:
 
@@ -382,7 +536,7 @@ if uploaded_file:
                 if text:
                     full_text += text + "\n"
 
-        # ---------------- CHUNKING ----------------
+        # ================= CHUNKING =================
 
         def chunk_text(text, chunk_size=700, overlap=120):
 
@@ -402,7 +556,7 @@ if uploaded_file:
 
         texts = chunk_text(full_text)
 
-        # ---------------- EMBEDDINGS ----------------
+        # ================= EMBEDDINGS =================
 
         with st.spinner("🧠 Building AI medical knowledge base..."):
 
@@ -410,9 +564,9 @@ if uploaded_file:
                 "all-MiniLM-L6-v2"
             )
 
-            embeddings = model.encode(
-                texts
-            ).astype("float32")
+            embeddings = model.encode(texts)
+
+            embeddings = np.array(embeddings).astype("float32")
 
             index = faiss.IndexFlatL2(
                 embeddings.shape[1]
@@ -424,7 +578,7 @@ if uploaded_file:
             f"✅ Medical knowledge base ready with {len(texts)} intelligent chunks."
         )
 
-        # ---------------- QUESTION ----------------
+        # ================= QUESTION =================
 
         st.markdown("""
         <div class="question-box">
@@ -437,7 +591,7 @@ if uploaded_file:
             placeholder="Example: What are the symptoms of pneumonia?"
         )
 
-        # ---------------- ANSWER BUTTON ----------------
+        # ================= ANSWER BUTTON =================
 
         if st.button("🚀 Generate AI Medical Answer"):
 
@@ -446,9 +600,9 @@ if uploaded_file:
 
             else:
 
-                q_emb = model.encode(
-                    [question]
-                ).astype("float32")
+                q_emb = model.encode([question])
+
+                q_emb = np.array(q_emb).astype("float32")
 
                 distances, indices = index.search(
                     q_emb,
@@ -459,7 +613,7 @@ if uploaded_file:
                     [texts[i] for i in indices[0]]
                 )
 
-                # ---------------- PROMPT ----------------
+                # ================= PROMPT =================
 
                 prompt = f"""
 You are an advanced AI Medical FAQ Assistant.
@@ -484,31 +638,37 @@ ANSWER:
                 try:
 
                     llm = genai.GenerativeModel(
-                        "gemini-2.5-flash-lite"
+                        "gemini-1.5-flash"
                     )
 
                     with st.spinner("🤖 AI is analyzing medical information..."):
 
                         response = llm.generate_content(prompt)
 
+                    answer = getattr(
+                        response,
+                        "text",
+                        "No response generated."
+                    )
+
                     st.markdown("## 🩺 AI Medical Answer")
 
                     st.markdown(
                         f"""
                         <div class="answer-box">
-                        {response.text}
+                        {answer}
                         </div>
                         """,
                         unsafe_allow_html=True
                     )
 
-                    # ---------------- SOURCE ----------------
+                    # ================= SOURCE =================
 
                     with st.expander("📚 View Source Context"):
 
                         st.write(context[:2000])
 
-                    # ---------------- DISCLAIMER ----------------
+                    # ================= DISCLAIMER =================
 
                     st.warning("""
 ⚠️ Medical Disclaimer:
@@ -523,78 +683,12 @@ Always consult certified healthcare professionals.
 
     finally:
 
-        os.unlink(tmp_path)
+        if os.path.exists(tmp_path):
+            os.unlink(tmp_path)
 
 st.markdown("</div>", unsafe_allow_html=True)
 
-# =====================================================
-# FLOATING AI BOT CSS
-# =====================================================
-
-st.markdown("""
-<style>
-
-.avatar {
-
-    position: fixed;
-
-    bottom: 25px;
-
-    right: 25px;
-
-    width: 95px;
-
-    height: 95px;
-
-    border-radius: 50%;
-
-    background: linear-gradient(
-        135deg,
-        #eff6ff 0%,
-        #dbeafe 20%,
-        #bfdbfe 40%,
-        #a5f3fc 60%,
-        #99f6e4 80%,
-        #dcfce7 100%
-    );
-
-    display: flex;
-
-    justify-content: center;
-
-    align-items: center;
-
-    font-size: 45px;
-
-    box-shadow:
-    0 0 35px rgba(168,85,247,0.9);
-
-    animation: float 3s ease infinite;
-
-    z-index: 999;
-}
-
-@keyframes float {
-
-    0% {
-        transform: translateY(0px);
-    }
-
-    50% {
-        transform: translateY(-12px);
-    }
-
-    100% {
-        transform: translateY(0px);
-    }
-}
-
-</style>
-""", unsafe_allow_html=True)
-
-# =====================================================
-# FLOATING AI BOT
-# =====================================================
+# ================= FLOATING BOT =================
 
 st.markdown("""
 <div class='avatar'>
@@ -602,10 +696,10 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-# ---------------- FOOTER ----------------
+# ================= FOOTER =================
 
 st.markdown("""
 <div class="footer">
-Made by Alisha Khan❤️
+Made by Alisha Khan ❤️
 </div>
 """, unsafe_allow_html=True)
